@@ -1,0 +1,17 @@
+{
+  "name": "ideaception2_backend",
+  "version": "0.1.0",
+  "description": "Backend for IdeaCeption2",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon ./server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}

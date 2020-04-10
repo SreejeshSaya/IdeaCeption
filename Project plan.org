@@ -1,0 +1,59 @@
+#+TITLE: Ideaception2
+
+* Features
+** User registration
+** User login
+** User profile (User info, projects, funding)
+** Project creation
+** Media upload (for project demo)
+** Browsing/filtering through projects
+** Funding
+
+
+* Notes
+** Frontend
+- Each page in frontend to go into 'src/pages' with appropriate subdirectories
+- React components to go into 'src/components'
+- For each page, HTML and JS file to be named the same, and in same
+  subdirectory. JS file is used to render React components in the HTML file
+- CSS file to be named same as corresponding HTML file and should be imported in
+  corresponding JS file
+  Ex: import './index.css' (in index.js for index.html)
+
+** Backend
+- All api route handling to be done in 'server.js'
+- All routes need to be prefixed with 'api'
+  Ex: '/api/login'
+- Each route group's functions to be defined in one file in 'routes', and
+  imported in server.js
+  Ex: Functions for 'user/login', 'user/register' etc. should be in one file
+- Models for database to be defined in separate files in 'database/models'
+- Database connection to be defined in 'database' folder (say database.js)
+
+
+* Tasks
+** NEXT Create project outline and initial commit
+** TODO Initial frontend (static pages) [0/3]
+*** TODO Home page
+*** TODO About page
+*** TODO Contact page (combine with about?)
+** TODO User registration [0/2]
+*** TODO Frontend (/user/register)
+*** TODO Backend (/api/user/register)
+** TODO User login [0/2]
+*** TODO Frontend (/user/login)
+*** TODO Backend (/api/user/login)
+** TODO Project creation [0/2]
+*** TODO Frontend (/projects/new)
+*** TODO Backend (/api/projects/new)
+** TODO Project view one [0/2]
+*** TODO Frontend (/projects/<id>)
+*** TODO Backend (/api/projects/<id>)
+** TODO Project view all [0/2]
+:LOGBOOK:
+- Note taken on [2020-04-10 Fri 07:11] \\
+  Implement pagination for large number of projects (add on, not initially)
+:END:
+*** TODO Frontend (/projects)
+*** TODO Backend (/api/projects/all)
+** TODO Funding (Instamojo API)
