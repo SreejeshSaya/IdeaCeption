@@ -32,14 +32,15 @@
 
 
 * Tasks
-** NEXT Create project outline and initial commit
-** TODO Initial frontend (static pages) [0/3]
-*** TODO Home page
+** DONE Create project outline and initial commit
+CLOSED: [2020-04-10 Fri 21:28]
+** NEXT Initial frontend (static pages) [0/3] :Sreejesh:
+*** NEXT Home page
 *** TODO About page
 *** TODO Contact page (combine with about?)
-** TODO User registration [0/2]
+** NEXT User registration [0/2] :Anirudh:
 *** TODO Frontend (/user/register)
-*** TODO Backend (/api/user/register)
+*** NEXT Backend (/api/user/register)
 ** TODO User login [0/2]
 *** TODO Frontend (/user/login)
 *** TODO Backend (/api/user/login)
@@ -47,6 +48,10 @@
 *** TODO Frontend (/projects/new)
 *** TODO Backend (/api/projects/new)
 ** TODO Project view one [0/2]
+:LOGBOOK:
+- Note taken on [2020-04-10 Fri 21:20] \\
+  Add tags support
+:END:
 *** TODO Frontend (/projects/<id>)
 *** TODO Backend (/api/projects/<id>)
 ** TODO Project view all [0/2]
