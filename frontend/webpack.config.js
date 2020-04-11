@@ -3,6 +3,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const getFilesFromDir = require("./config/files");
 const PAGE_DIR = path.join("src", "pages", path.sep);
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyPlugin = require('copy-webpack-plugin');
 
 const htmlPlugins = getFilesFromDir(PAGE_DIR, [".html"]).map((filePath) => {
   const fileName = filePath.replace(PAGE_DIR, "");
@@ -23,7 +24,12 @@ const entry = getFilesFromDir(PAGE_DIR, [".js"]).reduce((obj, filePath) => {
 
 module.exports = {
   entry: entry,
-  plugins: [...htmlPlugins, new MiniCssExtractPlugin()],
+  plugins: [...htmlPlugins, new MiniCssExtractPlugin(), new CopyPlugin([
+    {
+      from: "src/assets",
+      to: "assets"
+    }
+  ])],
   resolve: {
     alias: {
       src: path.resolve(__dirname, "src"),
@@ -45,6 +51,10 @@ module.exports = {
       {
         test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, "css-loader"],
+      },
+      {
+        test: /\.(jpe?g|png)$/i,
+        use: ["file-loader?name=/assets/images/[name]_[hash].[ext]"],
       },
     ],
   },
