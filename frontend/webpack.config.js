@@ -1,39 +1,42 @@
-const path = require("path");
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const getFilesFromDir = require("./config/files");
-const PAGE_DIR = path.join("src", "pages", path.sep);
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path');
+const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const getFilesFromDir = require('./config/files');
 
-const htmlPlugins = getFilesFromDir(PAGE_DIR, [".html"]).map((filePath) => {
-  const fileName = filePath.replace(PAGE_DIR, "");
+const PAGE_DIR = path.join('src', 'pages', path.sep);
+
+const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.html']).map((filePath) => {
+  const fileName = filePath.replace(PAGE_DIR, '');
   return new HtmlWebPackPlugin({
-    chunks: [fileName.replace(path.extname(fileName), ""), "vendor"],
+    chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
     template: filePath,
     filename: fileName,
   });
 });
 
-const entry = getFilesFromDir(PAGE_DIR, [".js"]).reduce((obj, filePath) => {
-  const entryChunkName = filePath
-    .replace(path.extname(filePath), "")
-    .replace(PAGE_DIR, "");
+const entry = getFilesFromDir(PAGE_DIR, ['.js']).reduce((obj, filePath) => {
+  const entryChunkName = filePath.replace(path.extname(filePath), '').replace(PAGE_DIR, '');
   obj[entryChunkName] = `./${filePath}`;
   return obj;
 }, {});
 
 module.exports = {
-  entry: entry,
-  plugins: [...htmlPlugins, new MiniCssExtractPlugin(), new CopyPlugin([
-    {
-      from: "src/assets",
-      to: "assets"
-    }
-  ])],
+  entry,
+  plugins: [
+    ...htmlPlugins,
+    new MiniCssExtractPlugin(),
+    new CopyPlugin([
+      {
+        from: 'src/assets/icons',
+        to: 'assets/icons',
+      },
+    ]),
+  ],
   resolve: {
     alias: {
-      src: path.resolve(__dirname, "src"),
-      components: path.resolve(__dirname, "src", "components"),
+      src: path.resolve(__dirname, 'src'),
+      components: path.resolve(__dirname, 'src', 'components'),
     },
   },
   module: {
@@ -42,19 +45,25 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
+          loader: 'babel-loader',
           options: {
-            presets: ["@babel/preset-env", "@babel/preset-react"],
+            presets: ['@babel/preset-env', '@babel/preset-react'],
           },
         },
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, "css-loader"],
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(jpe?g|png)$/i,
-        use: ["file-loader?name=/assets/images/[name]_[hash].[ext]"],
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name]_[contenthash].[ext]',
+            outputPath: 'assets/images'
+          },
+        },
       },
     ],
   },
@@ -63,8 +72,8 @@ module.exports = {
       cacheGroups: {
         vendor: {
           test: /node_modules/,
-          chunks: "initial",
-          name: "vendor",
+          chunks: 'initial',
+          name: 'vendor',
           enforce: true,
         },
       },
@@ -73,7 +82,7 @@ module.exports = {
   devServer: {
     port: 3100,
     compress: true,
-    stats: "errors-only",
+    stats: 'errors-only',
     open: true,
     inline: true,
     hot: true,

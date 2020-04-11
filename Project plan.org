@@ -19,6 +19,13 @@
 - CSS file to be named same as corresponding HTML file and should be imported in
   corresponding JS file
   Ex: import './index.css' (in index.js for index.html)
+- Icons to be placed in 'src/assets/icons', and url to be given in the HTML file
+  itself, with assets as the root directory
+  Ex: <link rel="icon" src="assets/icons/icon.png"> (not "../assets/icons/icon.png")
+- Other images to be imported in js (for use in React components) using relative
+  path
+  Ex: For component Main.jsx in 'src/components', use "import
+  '../assets/images/image.png' as image"
 
 ** Backend
 - All api route handling to be done in 'server.js'
