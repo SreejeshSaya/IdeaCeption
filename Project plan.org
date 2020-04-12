@@ -26,6 +26,8 @@
   path
   Ex: For component Main.jsx in 'src/components', use "import
   '../assets/images/image.png' as image"
+- JS and JSX components to be imported without extension i.e, "import Comp from
+  'components/comp'" instead of "import Comp from 'components/comp.jsx'"
 
 ** Backend
 - All api route handling to be done in 'server.js'

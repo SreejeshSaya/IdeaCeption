@@ -1,0 +1,95 @@
+html,
+body {
+	min-height: 100vh;
+}
+
+.header {
+	position: relative;
+	height: 15vw;
+	min-height: 110px;
+}
+
+.corner {
+	position: absolute;
+	z-index: 7;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	min-height: 160px;
+	width: 15vw;
+	min-width: 160px;
+	clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.titlebar {
+	height: 8vw;
+	min-height: 90px;
+	font-size: 5vw;
+	top: 1vw;
+	position: absolute;
+	z-index: 6;
+	left: 0;
+	right: 0;
+	color: white;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.nav-menu {
+	position: absolute;
+	z-index: 5;
+	top: 1vw;
+	width: 20%;
+	height: 100vh;
+	left: 0;
+	transition: transform 0.3s ease-in-out;
+}
+
+.menu-toggle {
+	display: flex;
+	position: relative;
+	top: 65%;
+	left: 0.7%;
+	flex-direction: column;
+	justify-content: space-around;
+	width: 1.5rem;
+	height: 1.5rem;
+	background: transparent;
+	border: none;
+	z-index: 8;
+	padding: 0;
+}
+
+.menu-toggle div {
+	width: 1.5rem;
+	height: 0.25rem;
+	background: white;
+	border-radius: 10px;
+	transition: all 0.3s linear;
+	position: relative;
+	transform-origin: 1px;
+	transition: transform 0.1s linear;
+}
+
+@media (max-width: 576px) {
+	.header {
+		height: 9vh;
+	}
+	.titlebar {
+		height: 9vh;
+		font-size: 5vh;
+		top: 0;
+	}
+	.nav-menu {
+		top: 0;
+		width: 50%;
+		height: 100vh;
+	}
+	.corner {
+		display: none;
+	}
+	.menu-toggle {
+		top: 30%;
+		left: 5%;
+	}
+}
