@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Header from 'components/Header';
 import Body from 'components/Body';
+import BigButton from 'components/BigButton';
+import Login from 'components/Login';
+import IdeaCard from 'components/IdeaCard';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
 
@@ -30,13 +33,10 @@ class Screen extends Component {
 				<Header menuToggle={menuToggle} />
 				<Menu menuVisible={menuVisible} />
 				<Body>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus posuere sed dolor ut
-					consectetur. In ac mi at purus dictum congue et sit amet dui. Suspendisse sed ligula non
-					leo vestibulum mattis. Quisque vitae ex ac felis pretium bibendum. Donec accumsan semper
-					tellus, et imperdiet enim sollicitudin vitae. Fusce tincidunt sed est ut consectetur.
-					Vestibulum fringilla tortor non orci viverra, id malesuada lacus congue. Nulla
-					sollicitudin et ante at laoreet. Mauris magna nunc, eleifend non ante quis, pretium
-					pharetra quam.
+					{/* <p>Body</p> */}
+					<BigButton type="browse" />
+					{/* <Login /> */}
+					{/* <IdeaCard /> */}
 				</Body>
 			</>
 		);

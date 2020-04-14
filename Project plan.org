@@ -44,9 +44,9 @@
 ** DONE Create project outline and initial commit
 CLOSED: [2020-04-10 Fri 21:28]
 ** NEXT Initial frontend (static pages) [0/3] :Sreejesh:
+*** DONE Created initial template for components
 *** NEXT Home page
-*** TODO About page
-*** TODO Contact page (combine with about?)
+*** TODO About/Contact page
 ** NEXT User registration [0/2] :Anirudh:
 *** TODO Frontend (/user/register)
 *** NEXT Backend (/api/user/register)
@@ -70,4 +70,17 @@ CLOSED: [2020-04-10 Fri 21:28]
 :END:
 *** TODO Frontend (/projects)
 *** TODO Backend (/api/projects/all)
-** TODO Funding (Instamojo API)
+** TODO Funding (Instamojo API) API Implementation not required
+
+:LOGBOOK: Sreejesh
+- Note taken on [2020-4-14 Tue 12:3] \\
+  BigButton: Could not get image to display (image has same name as type). Also, need css styling.
+  Login: Copied code from previous project. Did not work.
+- Note taken on [2020-4-14 Tue 13:51] \\
+  IdeaCard: Finished.
+  BigButton: Finished.
+  FundingBox:
+  IdeaCreate:
+  IdeaView:
+
+:END:
