@@ -21,12 +21,12 @@ class Database {
 	selectAll(sql, params = null) {
 		if (!params) params = {};
 		return new Promise((resolve, reject) => {
-			this.db_.all(sql, params, (error, row) => {
+			this.db_.all(sql, params, (error, rows) => {
 				if (error) {
 					reject(error);
 					return;
 				}
-				resolve(row);
+				resolve(rows);
 			});
 		});
 	}

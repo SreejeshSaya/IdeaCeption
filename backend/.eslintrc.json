@@ -1,7 +1,15 @@
 {
-  "extends": ["standard", "prettier"],
-  "plugins": ["prettier"],
-  "rules": {
-    "prettier/prettier": ["error"]
-  }
+	"extends": ["standard", "prettier"],
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": ["error"]
+	},
+	"settings": {
+		"alias": [
+			["root", "."],
+			["models", "./database/models"],
+			["users", "./routes/users"],
+			["posts", "./routes/posts"]
+		]
+	}
 }

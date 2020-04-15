@@ -1,28 +1,40 @@
 {
-  "name": "ideaception2_backend",
-  "version": "0.1.0",
-  "description": "Backend for IdeaCeption2",
-  "main": "server.js",
-  "scripts": {
-    "dev": "nodemon ./server.js"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1",
-    "sqlite3": "^4.1.1"
-  },
-  "devDependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-prettier": "^6.10.1",
-    "eslint-config-standard": "^14.1.1",
-    "eslint-plugin-import": "^2.20.2",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-prettier": "^3.1.2",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-standard": "^4.0.1",
-    "nodemon": "^2.0.3",
-    "prettier": "^2.0.4"
-  }
+	"name": "ideaception2_backend",
+	"version": "0.1.0",
+	"description": "Backend for IdeaCeption2",
+	"main": "server.js",
+	"scripts": {
+		"dev": "nodemon ./server.js"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"bcrypt": "^4.0.1",
+		"connect-sqlite3": "^0.9.11",
+		"cookie-parser": "^1.4.5",
+		"express": "^4.17.1",
+		"express-session": "^1.17.0",
+		"jsonwebtoken": "^8.5.1",
+		"module-alias": "^2.2.2",
+		"sqlite3": "^4.1.1"
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.10.1",
+		"eslint-config-standard": "^14.1.1",
+		"eslint-import-resolver-alias": "^1.1.2",
+		"eslint-plugin-import": "^2.20.2",
+		"eslint-plugin-node": "^11.1.0",
+		"eslint-plugin-prettier": "^3.1.2",
+		"eslint-plugin-promise": "^4.2.1",
+		"eslint-plugin-standard": "^4.0.1",
+		"nodemon": "^2.0.3",
+		"prettier": "^2.0.4"
+	},
+	"_moduleAliases": {
+		"root": ".",
+		"models": "./database/models",
+		"users": "./routes/users",
+		"posts": "./routes/posts"
+	}
 }

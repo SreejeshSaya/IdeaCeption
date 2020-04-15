@@ -17,24 +17,66 @@ class BaseModel {
 		if (!options) options = {};
 		if (!options.fields) options.fields = '*';
 		let whereClause = '';
+		const params = [];
 		for (const field in checkFields) {
 			if (!checkFields.hasOwnProperty(field)) continue;
 			if (whereClause === '') {
-				whereClause += `WHERE ${field} = ${checkFields[field]}`;
+				whereClause += `WHERE ${field} = ?`;
 			} else {
-				whereClause += ` AND ${field} = ${checkFields[field]}`;
+				whereClause += ` AND ${field} = ?`;
 			}
+			params.push(checkFields[field]);
 		}
-		const sql = `SELECT ${options.fields} FROM ${this.tableName()} ${whereClause};`;
+		const sql = `SELECT ${options.fields} FROM ${this.tableName()} ${whereClause}`;
 		console.log(sql);
-		const obj = options.unique ? this.db_.selectOne(sql) : this.db_.selectAll(sql);
-		return obj;
+		console.log(params);
+
+		try {
+			const obj = options.unique
+				? await this.db_.selectOne(sql, params)
+				: await this.db_.selectAll(sql, params);
+			return obj;
+		} catch (e) {
+			throw Error(e);
+		}
 	}
 
 	static async loadOne(id) {
 		const obj = await this.loadByFields({ id }, { unique: true });
-		console.log(obj);
 		return obj;
+	}
+
+	static async create(obj, fields = null) {
+		let useObjFields = false;
+		if (!fields) {
+			fields = [];
+			useObjFields = true;
+		}
+
+		const params = [];
+		for (var field in obj) {
+			params.push(obj[field]);
+			if (useObjFields) {
+				fields.push(field);
+			}
+		}
+
+		let fieldPlaceholder = '(?';
+		if (fields.length > 1) {
+			for (var i = 1, len = fields.length; i < len; ++i) {
+				fieldPlaceholder += ', ?';
+			}
+		}
+		fieldPlaceholder += ')';
+
+		const sql = `INSERT INTO ${this.tableName()}(${fields.join(', ')}) VALUES ${fieldPlaceholder};`;
+		console.log(sql);
+
+		try {
+			await this.db_.exec(sql, params);
+		} catch (e) {
+			throw Error(e);
+		}
 	}
 }
 
