@@ -15,7 +15,7 @@
 - Each page in frontend to go into 'src/pages' with appropriate subdirectories
 - React components to go into 'src/components'
 - For each page, HTML and JS file to be named the same, and in same
-  subdirectory. JS file is used to render React components in the HTML file
+  sub-directory. JS file is used to render React components in the HTML file
 - CSS file to be named same as corresponding HTML file and should be imported in
   corresponding JS file
   Ex: import './index.css' (in index.js for index.html)
@@ -43,16 +43,18 @@
 * Tasks
 ** DONE Create project outline and initial commit
 CLOSED: [2020-04-10 Fri 21:28]
-** NEXT Initial frontend (static pages) [0/3] :Sreejesh:
+** NEXT Initial frontend (static pages) [2/3] :Sreejesh:
 *** DONE Created initial template for components
 *** DONE Home page
-*** TODO About/Contact page
-** NEXT User registration [0/2] :Anirudh:
-*** TODO Frontend (/user/register)
-*** NEXT Backend (/api/user/register)
-** TODO User login [0/2]
-*** TODO Frontend (/user/login)
-*** TODO Backend (/api/user/login)
+*** NEXT About/Contact page
+** NEXT User registration [1/2] :Anirudh:
+*** NEXT Frontend (/user/register)
+*** DONE Backend (/api/user/register)
+CLOSED: [2020-04-16 Thu 01:27]
+** TODO User login [1/2]
+*** NEXT Frontend (/user/login)
+*** DONE Backend (/api/user/login)
+CLOSED: [2020-04-16 Thu 01:27]
 ** TODO Project creation [0/2]
 *** TODO Frontend (/projects/new)
 *** TODO Backend (/api/projects/new)
@@ -70,9 +72,10 @@ CLOSED: [2020-04-10 Fri 21:28]
 :END:
 *** TODO Frontend (/projects)
 *** TODO Backend (/api/projects/all)
-** TODO Funding (Instamojo API) API Implementation not required
-
-:LOGBOOK: Sreejesh
+** TODO Funding (Instamojo API)
+:LOGBOOK:
+- Note taken on [2020-04-16 Thu 01:28] \\
+  API implementation not required
 - Punch in [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
   Created separated css files for most components
   Fixed Login component issue. 
