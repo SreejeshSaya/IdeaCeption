@@ -85,6 +85,9 @@ a:hover {
 		top: 0;
 	}
 	.nav-menu {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
 		top: 0;
 		width: 50%;
 		height: 100vh;
@@ -101,41 +104,4 @@ a:hover {
 #Logo {
 	width: 50%;
 	transform: translate(10%, 15%);
-}
-
-.idea-card {
-	display: grid;
-	grid-template-columns: 150px auto;
-	background-color: lightgrey;
-	padding: 4px;
-	border-radius: 10px;
-}
-
-.idea-image {
-	padding: 5px;
-	width: 150px;
-	height: 150px;
-}
-
-.idea-text {
-	padding: 10px;
-	text-align: left;
-}
-
-.square-button {
-	display: grid;
-	width: 250px;
-	height: 280px;
-	grid-template-rows: 300px 20px;
-	background-color: lightgrey;
-}
-
-.square-button-image {
-	padding: 10px;
-	width: 240px;
-	height: 240px;
-}
-
-.square-button-text {
-	text-align: center;
 }

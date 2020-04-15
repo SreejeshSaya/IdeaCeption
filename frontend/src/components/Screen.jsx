@@ -4,6 +4,7 @@ import Body from 'components/Body';
 import BigButton from 'components/BigButton';
 import Login from 'components/Login';
 import IdeaCard from 'components/IdeaCard';
+import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
 
@@ -31,12 +32,13 @@ class Screen extends Component {
 		return (
 			<>
 				<Header menuToggle={menuToggle} />
-				<Menu menuVisible={menuVisible} />
+				<Menu menuVisible={menuVisible}></Menu>
 				<Body>
-					{/* <p>Body</p> */}
+					<p>Body</p>
 					<BigButton type="browse" />
-					{/* <Login /> */}
-					{/* <IdeaCard /> */}
+					<Login />
+					<IdeaCard />
+					<IdeaCreate />
 				</Body>
 			</>
 		);

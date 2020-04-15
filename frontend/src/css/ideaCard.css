@@ -1,0 +1,30 @@
+.idea-card {
+	display: grid;
+	grid-template-columns: 150px auto;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	background-color: #eee;
+	padding: 4px;
+	border-radius: 10px;
+	box-sizing: border-box;
+	margin: 10px;
+}
+
+.idea-card img {
+	padding: 5px;
+	width: 150px;
+	height: 150px;
+}
+
+.idea-text {
+	padding: 10px;
+	text-align: center;
+}
+
+.idea-title {
+	color: black;
+}
+
+.idea-abstract {
+	font-size: 15px;
+	/* color: black; */
+}

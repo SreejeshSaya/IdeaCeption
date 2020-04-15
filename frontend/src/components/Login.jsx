@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../css/login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -6,43 +7,55 @@ class Login extends Component {
 	}
 
 	render() {
-		return <></>;
+		const textStyle = {
+			fontSize: '16px',
+		};
+		const alertStyle = {
+			display: 'none',
+		};
+		return (
+			<div id="loginDiv">
+				<div id="login_details">
+					<form id="login_form" action="">
+						<div className="alert alert-danger login-error" style={alertStyle} />
+						<label htmlFor="email" style={textStyle}>
+							Username/E-mail
+						</label>
+						{/* <br /> */}
+						<input type="text" className="email" name="userMail" />
+						<br />
+						<label htmlFor="password" style={textStyle}>
+							Password
+						</label>
+						<br />
+						<input type="password" className="password" name="userPass" />
+						<br />
+						<button className="btn btn-secondary btn-block" name="login_submit" value="1">
+							LOGIN
+						</button>
+						<br />
+					</form>
+				</div>
+				<div id="login_footer">
+					<div className="block">
+						<a href="../signup" className="btn btn-primary">
+							SIGN UP
+						</a>
+					</div>
+					<div className="block">
+						<span id="forgot">
+							<a href="#">Forgot password ?</a>
+						</span>
+					</div>
+				</div>
+			</div>
+		);
 	}
 }
 
 export default Login;
 
-// <div id="login_details">
-// <form id="login_form" action="../api/login.php">
-// 	<div class="alert alert-danger login-error" style="display:none"></div>
-// 	<label for="email" style="font-size: 16px;">
-// 		Username/E-mail
-// 	</label>
-// 	<br />
-// 	<input type="text" class="email" name="userMail" />
-// 	<br />
-// 	<label for="password" style="font-size: 16px;">
-// 		Password
-// 	</label>
-// 	<br />
-// 	<input type="password" class="password" name="userPass" />
-// 	<br />
-// 	<button class="btn btn-secondary btn-block" name="login_submit" value="1">
-// 		LOGIN
-// 	</button>
-// 	<br />
-// </form>
-// </div>
-// <div id="login_footer">
-// <div class="block">
-// 	<a href="../signup" class="btn btn-primary">
-// 		SIGN UP
-// 	</a>
-// </div>
-// <div class="block">
-// 	<span id="forgot">
-// 		<a href="#">Forgot password ?</a>
-// 	</span>
-// </div>
-// </div>
-// {/* // <script src="../scripts/login.js"></script> */}
+//1. remove action attribute.
+//2. styling in own or bootstrap. javascript object
+// htmlFor instaed of for.
+//

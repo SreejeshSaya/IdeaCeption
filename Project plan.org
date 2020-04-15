@@ -45,7 +45,7 @@
 CLOSED: [2020-04-10 Fri 21:28]
 ** NEXT Initial frontend (static pages) [0/3] :Sreejesh:
 *** DONE Created initial template for components
-*** NEXT Home page
+*** DONE Home page
 *** TODO About/Contact page
 ** NEXT User registration [0/2] :Anirudh:
 *** TODO Frontend (/user/register)
@@ -73,14 +73,10 @@ CLOSED: [2020-04-10 Fri 21:28]
 ** TODO Funding (Instamojo API) API Implementation not required
 
 :LOGBOOK: Sreejesh
-- Note taken on [2020-4-14 Tue 12:3] \\
-  BigButton: Could not get image to display (image has same name as type). Also, need css styling.
-  Login: Copied code from previous project. Did not work.
-- Note taken on [2020-4-14 Tue 13:51] \\
-  IdeaCard: Finished.
-  BigButton: Finished.
-  FundingBox:
-  IdeaCreate:
-  IdeaView:
-
+- Punch in [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
+  Created separated css files for most components
+  Fixed Login component issue. 
+  Implemented idea Create component. (Requires a few more features to be added.)
+  Added CSS styling for idea Cards
+  Punch out 
 :END:

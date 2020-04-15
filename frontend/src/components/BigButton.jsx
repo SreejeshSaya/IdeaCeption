@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import image from '../assets/images/browse.png';
+import '../css/bigButton.css';
 
 class BigButton extends Component {
 	constructor(props) {
@@ -8,10 +10,10 @@ class BigButton extends Component {
 	render() {
 		const { type } = this.props;
 		return (
-			<div class="square-button">
+			<div className="square-button">
 				<a href="">
-					<img class="square-button-image" src="assets/icons/browse.png" alt={type} />
-					<h5 class="square-button-text">{this.props.type}</h5>
+					<img className="square-button-image" src={image} alt={type} />
+					<h5 className="square-button-text">{this.props.type}</h5>
 				</a>
 			</div>
 		);
