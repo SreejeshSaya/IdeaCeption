@@ -9,7 +9,8 @@
 			["root", "."],
 			["models", "./database/models"],
 			["users", "./routes/users"],
-			["posts", "./routes/posts"]
+			["posts", "./routes/posts"],
+			["validators", "./routes/validators"]
 		]
 	}
 }

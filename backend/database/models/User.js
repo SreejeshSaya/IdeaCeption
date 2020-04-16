@@ -32,8 +32,13 @@ class User extends BaseModel {
 		}
 	}
 
-	static async validUser(username) {
+	static async validUsername(username) {
 		const user = await this.loadByFields({ username }, { unique: true });
+		return !!user;
+	}
+
+	static async validEmail(email) {
+		const user = await this.loadByFields({ email }, { unique: true });
 		return !!user;
 	}
 

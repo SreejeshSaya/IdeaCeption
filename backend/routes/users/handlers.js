@@ -50,10 +50,15 @@ async function login(req, res, next) {
 	}
 }
 
-async function userValidate(req, res, next) {
-	const { username } = req.body;
-	res.send(await User.validUser(username));
-	next();
+function logout(req, res, next) {
+	req.session.logged_in = false;
+	res.send({
+		status: 1,
+		message: "You have logged out",
+		messageClass: 'info',
+		redirect: '/users/login'
+	})
+	next()
 }
 
-module.exports = { register, login, userValidate };
+module.exports = { register, login, logout };
