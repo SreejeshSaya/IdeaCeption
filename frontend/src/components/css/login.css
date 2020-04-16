@@ -10,7 +10,7 @@
 
 #login_details {
 	flex: 2;
-	border-right: 2px solid black;
+	/* border-right: 2px solid black; */
 }
 
 #login_footer {

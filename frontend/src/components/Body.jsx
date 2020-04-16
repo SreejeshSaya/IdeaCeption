@@ -6,7 +6,7 @@ class Body extends Component {
 
 		this.classes = {
 			body: 'container',
-			centerCol: 'col-md-8 offset-md-2',
+			centerCol: 'col-md-12 offset-md-1',
 		};
 	}
 

@@ -1,12 +1,16 @@
 .idea-card {
 	display: grid;
 	grid-template-columns: 150px auto;
-	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 	background-color: #eee;
 	padding: 4px;
 	border-radius: 10px;
 	box-sizing: border-box;
 	margin: 10px;
+}
+
+.idea-card:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
 }
 
 .idea-card img {
@@ -17,7 +21,7 @@
 
 .idea-text {
 	padding: 10px;
-	text-align: center;
+	text-align: left;
 }
 
 .idea-title {

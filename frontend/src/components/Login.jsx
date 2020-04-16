@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../css/login.css';
+import './css/login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -18,16 +18,16 @@ class Login extends Component {
 				<div id="login_details">
 					<form id="login_form" action="">
 						<div className="alert alert-danger login-error" style={alertStyle} />
-						<label htmlFor="email" style={textStyle}>
-							Username/E-mail
+						<label htmlFor="username" style={textStyle}>
+							Username
 						</label>
-						{/* <br /> */}
 						<input type="text" className="email" name="userMail" />
+						<br />
 						<br />
 						<label htmlFor="password" style={textStyle}>
 							Password
 						</label>
-						<br />
+						{/* <br /> */}
 						<input type="password" className="password" name="userPass" />
 						<br />
 						<button className="btn btn-secondary btn-block" name="login_submit" value="1">
@@ -38,8 +38,9 @@ class Login extends Component {
 				</div>
 				<div id="login_footer">
 					<div className="block">
+						<h5>New User?</h5>
 						<a href="../signup" className="btn btn-primary">
-							SIGN UP
+							Sign up
 						</a>
 					</div>
 					<div className="block">

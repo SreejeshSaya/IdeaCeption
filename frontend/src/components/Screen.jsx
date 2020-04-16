@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Header from 'components/Header';
 import Body from 'components/Body';
-import BigButton from 'components/BigButton';
+import Home from 'components/Home';
 import Login from 'components/Login';
 import IdeaCard from 'components/IdeaCard';
 import IdeaCreate from 'components/IdeaCreate';
@@ -53,11 +53,10 @@ class Screen extends Component {
 				<Header menuToggle={menuToggle} menuToggle2={menuToggle2} />
 				<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()} />
 				<Body>
-					<p>Body</p>
-					<BigButton type="browse" />
-					<Login />
-					<IdeaCard />
-					<IdeaCreate />
+					{/* <Login /> */}
+					{/* <IdeaCard /> */}
+					{/* <IdeaCreate /> */}
+					<Home />
 				</Body>
 			</>
 		);

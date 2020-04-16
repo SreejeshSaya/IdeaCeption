@@ -72,14 +72,24 @@ CLOSED: [2020-04-16 Thu 01:27]
 :END:
 *** TODO Frontend (/projects)
 *** TODO Backend (/api/projects/all)
-** TODO Funding (Instamojo API)
-:LOGBOOK:
-- Note taken on [2020-04-16 Thu 01:28] \\
-  API implementation not required
-- Punch in [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
+** TODO Funding (Instamojo API) API Implementation not required
+
+:LOGBOOK: Sreejesh
+- Punch in CLOCK: [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
   Created separated css files for most components
   Fixed Login component issue. 
   Implemented idea Create component. (Requires a few more features to be added.)
   Added CSS styling for idea Cards
-  Punch out 
+  ISSUES ---
+  1. Menu Bar only extends to the size of the screen and not webpage.
+  2. Need to implement actions in logging in, creating ideas etc...
+- Punch in CLOCK: [2020-4-16 Thu 12:29]
+  Created separate html files for components
+  Inserted ckeditor in ideaCreate
+  Finished Homepage componenet. Requires content.
 :END:
+
+//implement ckeditor
+//Flash Messages
+//To download ckeditor run 'npm istall ckeditor4-react'
+Need to remove hamburger menu
