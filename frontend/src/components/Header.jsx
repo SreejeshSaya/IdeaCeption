@@ -17,7 +17,7 @@ class Header extends Component {
 	}
 
 	render() {
-		const { rightButtons, menuToggle } = this.props;
+		const { rightButtons, menuToggle, menuToggle2 } = this.props;
 		const headerComp = (
 			<header className={this.getClasses('header')}>
 				{menuToggle}
@@ -26,7 +26,9 @@ class Header extends Component {
 				</div>
 
 				<div className={this.getClasses('titleBar')}>
-					<div />
+					<div>
+						{menuToggle2}
+					</div>
 					<div>
 						<span className="text-info">Idea</span>Ception
 					</div>

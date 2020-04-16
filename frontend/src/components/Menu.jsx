@@ -10,7 +10,7 @@ class Menu extends Component {
 	}
 
 	render() {
-		const { children, menuVisible } = this.props;
+		const { children, menuVisible, toggleFunc } = this.props;
 		return (
 			<nav
 				className={this.classes.navMenu}
@@ -23,7 +23,7 @@ class Menu extends Component {
 }
 
 function MenuToggle(props) {
-	const { toggleFunc, menuVisible } = props;
+	const { toggleFunc, menuVisible, className } = props;
 	const divStyles = {
 		first: {
 			transform: `rotate(${menuVisible ? '45deg' : 0})`,
@@ -37,7 +37,7 @@ function MenuToggle(props) {
 	};
 
 	return (
-		<button type="button" className="menu-toggle" onClick={toggleFunc}>
+		<button type="button" className={className} onClick={toggleFunc}>
 			<div style={divStyles.first} />
 			<div style={divStyles.second} />
 			<div style={divStyles.third} />

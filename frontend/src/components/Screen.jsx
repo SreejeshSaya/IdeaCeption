@@ -27,12 +27,31 @@ class Screen extends Component {
 	render() {
 		const { menuVisible } = this.state;
 		const menuToggle = (
-			<MenuToggle menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()} />
+			<MenuToggle
+				className="menu-toggle"
+				menuVisible={menuVisible}
+				toggleFunc={() => this.toggleMenu()}
+			/>
+		);
+		const menuToggle2 = (
+			<MenuToggle
+				className="menu-toggle-alt"
+				menuVisible={menuVisible}
+				toggleFunc={() => this.toggleMenu()}
+			/>
+		);
+		const menuToggle3 = (
+			<MenuToggle
+				className="menu-toggle-nav"
+				menuVisible={menuVisible}
+				toggleFunc={() => this.toggleMenu()}
+			/>
 		);
 		return (
 			<>
-				<Header menuToggle={menuToggle} />
-				<Menu menuVisible={menuVisible}></Menu>
+				<div className="corner-nav bg-dark">{menuToggle3}</div>
+				<Header menuToggle={menuToggle} menuToggle2={menuToggle2} />
+				<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()} />
 				<Body>
 					<p>Body</p>
 					<BigButton type="browse" />
