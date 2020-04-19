@@ -51,13 +51,28 @@ a:hover {
 
 .nav-menu {
 	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	z-index: 5;
 	top: 0;
+	left: 0;
 	width: 17vw;
 	min-width: 170px;
 	height: 100vh;
-	left: 0;
 	transition: transform 0.3s ease-in-out;
+}
+
+.navbar-link {
+	color: white;
+	font-size: 1.5em;
+	margin: 0.5em 0;
+	transition: color 0.2s;
+}
+
+.navbar-link:hover {
+	color: #343a40;
 }
 
 .menu-toggle, .menu-toggle-nav, .menu-toggle-alt {

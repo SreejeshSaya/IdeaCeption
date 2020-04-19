@@ -55,6 +55,7 @@ module.exports = {
 					loader: 'babel-loader',
 					options: {
 						presets: ['@babel/preset-env', '@babel/preset-react'],
+						plugins: ['@babel/plugin-transform-runtime'],
 					},
 				},
 			},
@@ -93,5 +94,12 @@ module.exports = {
 		open: true,
 		inline: true,
 		hot: true,
+		proxy: {
+			'/api': {
+				target: 'http://localhost:3000',
+				secure: false,
+				changeOrigin: true,
+			},
+		},
 	},
 };

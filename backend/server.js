@@ -30,7 +30,7 @@ app.get('/', async function (req, res) {
 
 app.use('/api/users', userRouter);
 
-app.use('/api/validate', validateRouter)
+app.use('/api/validate', validateRouter);
 
 app.listen(PORT, () => {
 	console.log('Server is running on port' + PORT);

@@ -2,10 +2,11 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const User = require('models/User');
 const { register, login, logout } = require('./handlers');
-const { loginRequired } = require('validators/utils')
+const { loginRequired } = require('validators/utils');
 
 const userRouter = express.Router();
 userRouter.use(express.urlencoded({ extended: true }));
+userRouter.use(express.json());
 userRouter.use(cookieParser());
 
 userRouter.post('/register', register);

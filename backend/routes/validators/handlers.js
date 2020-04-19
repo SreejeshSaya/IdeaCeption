@@ -7,7 +7,7 @@ async function usernameValidate(req, res, next) {
 }
 
 async function emailValidate(req, res, next) {
-	const { email} = req.body;
+	const { email } = req.body;
 	res.send(await User.validEmail(email));
 	next();
 }

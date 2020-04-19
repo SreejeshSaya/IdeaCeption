@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Alert from 'components/Alert';
 import Header from 'components/Header';
 import Body from 'components/Body';
 import Home from 'components/Home';
@@ -17,7 +18,67 @@ class Screen extends Component {
 			menuVisible: false,
 			loginVisible: false,
 			loggedIn: false,
+			alert: {
+				message: '',
+				messageClass: '',
+			},
 		};
+	}
+
+	componentWillMount() {
+		if (localStorage.getItem('loggedIn')) {
+			this.setState({
+				loggedIn: true,
+			});
+		}
+		if (localStorage.getItem('message')) {
+			this.setState(
+				{
+					alert: {
+						message: localStorage.getItem('message'),
+						messageClass: localStorage.getItem('messageClass') || 'info',
+					},
+				},
+				() => {
+					localStorage.removeItem('message');
+					localStorage.removeItem('messageClass');
+				}
+			);
+		}
+	}
+
+	logIn(res) {
+		this.setState(
+			{
+				loggedIn: true,
+				loginVisible: false,
+			},
+			() => {
+				localStorage.setItem('loggedIn', true);
+				this.setState({
+					alert: {
+						message: res.message,
+						messageClass: res.messageClass,
+					},
+				});
+			}
+		);
+	}
+
+	async logOut() {
+		localStorage.removeItem('loggedIn');
+		this.setState(
+			{
+				loggedIn: false,
+			},
+			fetch('/api/users/logout')
+				.then((res) => res.json())
+				.then((data) => {
+					localStorage.setItem('message', data.message);
+					localStorage.setItem('messageClass', data.messageClass);
+					location.href = data.redirect;
+				})
+		);
 	}
 
 	toggleMenu() {
@@ -66,6 +127,14 @@ class Screen extends Component {
 			/>
 		);
 
+		const menu = (
+			<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()}>
+				<a className="navbar-link" href="/ideas/add">Add</a>
+				<a className="navbar-link" href="/ideas/browse">Browse</a>
+				<a className="navbar-link" href="/ideas/fund">Fund</a>
+			</Menu>
+		);
+
 		const { page } = this.props;
 		let toRender = {};
 		if (page === 'home') {
@@ -82,11 +151,24 @@ class Screen extends Component {
 				<Header
 					menuToggle={menuToggle}
 					menuToggle2={menuToggle2}
-					rightButtons={<LoginButton loginState={loggedIn} loginFunc={() => this.toggleLogin()} />}
+					rightButtons={
+						<LoginButton
+							loginState={loggedIn}
+							loginFunc={() => this.toggleLogin()}
+							logoutFunc={() => this.logOut()}
+						/>
+					}
 				/>
-				<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()} />
-				<Body>{toRender}</Body>
-				<Login display={loginVisible} dismiss={() => this.dismissLogin()} />
+				{menu}
+				<Body>
+					<Alert messageClass={this.state.alert.messageClass}>{this.state.alert.message}</Alert>
+					{toRender}
+				</Body>
+				<Login
+					display={loginVisible}
+					logIn={(res) => this.logIn(res)}
+					dismiss={() => this.dismissLogin()}
+				/>
 			</>
 		);
 	}

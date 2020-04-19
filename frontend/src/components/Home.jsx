@@ -12,8 +12,8 @@ function Home(props) {
 			</p>
 			<br />
 			<div id="quickButtons">
-				<BigButton type="add" />
-				<BigButton type="browse" />
+				<BigButton type="add" link="/ideas/add" />
+				<BigButton type="browse" link="/ideas/browse" />
 			</div>
 		</div>
 	);

@@ -21,6 +21,7 @@ class User extends BaseModel {
 	}
 
 	static async create(obj, fields = null) {
+		console.log(obj);
 		if (!obj.password) throw new Error('Password not provided!');
 
 		const hashedPass = await bcrypt.hash(obj.password, 10);
@@ -42,8 +43,8 @@ class User extends BaseModel {
 		return !!user;
 	}
 
-	static async verify(username, password) {
-		const user = await this.loadByFields({ username }, { unique: true });
+	static async verify(email, password) {
+		const user = await this.loadByFields({ email }, { unique: true });
 		if (!user) throw new Error('No user with this username');
 		const validPass = await bcrypt.compare(password, user.password);
 		return validPass;

@@ -9,7 +9,6 @@ async function register(req, res, next) {
 			status: 1,
 			message: 'User registered successfully!',
 			messageClass: 'success',
-			redirect: '/',
 		});
 		next();
 	} catch (e) {
@@ -22,11 +21,11 @@ async function register(req, res, next) {
 }
 
 async function login(req, res, next) {
-	const { username, password } = req.body;
+	const { email, password } = req.body;
 	try {
-		if (await User.verify(username, password)) {
+		if (await User.verify(email, password)) {
 			req.session.logged_in = true;
-			req.session.user = await User.loadByFields({ username });
+			req.session.user = await User.loadByFields({ email });
 			res.send({
 				status: 1,
 				message: 'You have logged in successfully!',
@@ -51,14 +50,14 @@ async function login(req, res, next) {
 }
 
 function logout(req, res, next) {
-	req.session.logged_in = false;
+	req.session.destroy();
 	res.send({
 		status: 1,
-		message: "You have logged out",
+		message: 'You have logged out',
 		messageClass: 'info',
-		redirect: '/users/login'
-	})
-	next()
+		redirect: '/',
+	});
+	next();
 }
 
 module.exports = { register, login, logout };
