@@ -47,49 +47,47 @@ CLOSED: [2020-04-10 Fri 21:28]
 *** DONE Created initial template for components
 *** DONE Home page
 *** NEXT About/Contact page
-** NEXT User registration [1/2] :Anirudh:
-*** NEXT Frontend (/user/register)
+** DONE User registration [2/2] :Anirudh:
+CLOSED: [2020-04-20 Mon 04:50]
+*** DONE Frontend (/user/register)
+CLOSED: [2020-04-20 Mon 04:48]
 *** DONE Backend (/api/user/register)
 CLOSED: [2020-04-16 Thu 01:27]
-** TODO User login [1/2]
-*** NEXT Frontend (/user/login)
+** DONE User login [2/2] :Anirudh:
+CLOSED: [2020-04-20 Mon 04:50]
+*** DONE Frontend (/user/login)
+CLOSED: [2020-04-20 Mon 04:48]
 *** DONE Backend (/api/user/login)
 CLOSED: [2020-04-16 Thu 01:27]
-** TODO Project creation [0/2]
-*** TODO Frontend (/projects/new)
-*** TODO Backend (/api/projects/new)
-** TODO Project view one [0/2]
+** NEXT Project creation [1/2] :Sreejesh:
+*** DONE Frontend (/projects/new)
+CLOSED: [2020-04-20 Mon 04:50]
+*** NEXT Backend (/api/projects/new)
+** NEXT Project view one [0/2]
 :LOGBOOK:
 - Note taken on [2020-04-10 Fri 21:20] \\
   Add tags support
 :END:
-*** TODO Frontend (/projects/<id>)
-*** TODO Backend (/api/projects/<id>)
-** TODO Project view all [0/2]
+*** NEXT Frontend (/projects/<id>)
+*** NEXT Backend (/api/projects/<id>)
+** NEXT Project view all [0/2]
 :LOGBOOK:
 - Note taken on [2020-04-10 Fri 07:11] \\
   Implement pagination for large number of projects (add on, not initially)
 :END:
-*** TODO Frontend (/projects)
-*** TODO Backend (/api/projects/all)
-** TODO Funding (Instamojo API) API Implementation not required
-
-:LOGBOOK: Sreejesh
-- Punch in CLOCK: [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
+*** NEXT Frontend (/projects)
+*** NEXT Backend (/api/projects/all)
+** [X] Funding (Instamojo API)
+CLOSED: [2020-04-20 Mon 04:49]
+:LOGBOOK:
+- State "[X]"        from "DONE"       [2020-04-20 Mon 04:49] \\
+  Not required and prohibited by time
+- Note taken on [2020-04-16 Thu 01:28] \\
+  API implementation not required
+- Punch in [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
   Created separated css files for most components
   Fixed Login component issue. 
   Implemented idea Create component. (Requires a few more features to be added.)
   Added CSS styling for idea Cards
-  ISSUES ---
-  1. Menu Bar only extends to the size of the screen and not webpage.
-  2. Need to implement actions in logging in, creating ideas etc...
-- Punch in CLOCK: [2020-4-16 Thu 12:29]
-  Created separate html files for components
-  Inserted ckeditor in ideaCreate
-  Finished Homepage componenet. Requires content.
+  Punch out 
 :END:
-
-//implement ckeditor
-//Flash Messages
-//To download ckeditor run 'npm istall ckeditor4-react'
-Need to remove hamburger menu
