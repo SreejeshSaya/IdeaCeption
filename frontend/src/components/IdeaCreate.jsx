@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './css/ideaCreate.css';
-import '../../node_modules/ckeditor4-react/dist/ckeditor';
-// import { CKEditor } from '../../node_modules/ckeditor4-react/dist/ckeditor';
+import CKEditorConfig from '../../config/ckEditorConfig';
 import CKEditor from 'ckeditor4-react';
 
 class IdeaCreate extends Component {
@@ -39,7 +38,7 @@ class IdeaCreate extends Component {
 						LOGIN NOW
 					</button>
 				</div>
-				<CKEditor config={{ height: 500 }} type="classic" data="<p>Hello</p>" />
+				<CKEditor config={CKEditorConfig} type="classic" data="<p>Hello</p>" />
 				<center>
 					<button className="btn btn-secondary btn-block" onClick={add_idea} id="add_idea_btn">
 						ADD IDEA

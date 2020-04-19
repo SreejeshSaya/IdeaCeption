@@ -3,6 +3,7 @@ import Header from 'components/Header';
 import Body from 'components/Body';
 import Home from 'components/Home';
 import Login from 'components/Login';
+import LoginButton from 'components/LoginButton';
 import IdeaCard from 'components/IdeaCard';
 import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
@@ -14,6 +15,8 @@ class Screen extends Component {
 
 		this.state = {
 			menuVisible: false,
+			loginVisible: false,
+			loggedIn: false,
 		};
 	}
 
@@ -24,8 +27,23 @@ class Screen extends Component {
 		});
 	}
 
+	toggleLogin() {
+		const { loginVisible } = this.state;
+		this.setState({
+			loginVisible: !loginVisible,
+		});
+	}
+
+	dismissLogin() {
+		if (event.target.getAttribute('role') === 'modal-dismiss') {
+			this.setState({
+				loginVisible: false,
+			});
+		}
+	}
+
 	render() {
-		const { menuVisible } = this.state;
+		const { menuVisible, loginVisible, loggedIn } = this.state;
 		const menuToggle = (
 			<MenuToggle
 				className="menu-toggle"
@@ -47,17 +65,28 @@ class Screen extends Component {
 				toggleFunc={() => this.toggleMenu()}
 			/>
 		);
+
+		const { page } = this.props;
+		let toRender = {};
+		if (page === 'home') {
+			toRender = <Home />;
+		} else if (page === 'add-idea') {
+			toRender = <IdeaCreate />;
+		} else if (page === 'view-idea-list') {
+			toRender = <IdeaCard />;
+		}
+
 		return (
 			<>
 				<div className="corner-nav bg-dark">{menuToggle3}</div>
-				<Header menuToggle={menuToggle} menuToggle2={menuToggle2} />
+				<Header
+					menuToggle={menuToggle}
+					menuToggle2={menuToggle2}
+					rightButtons={<LoginButton loginState={loggedIn} loginFunc={() => this.toggleLogin()} />}
+				/>
 				<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()} />
-				<Body>
-					{/* <Login /> */}
-					{/* <IdeaCard /> */}
-					{/* <IdeaCreate /> */}
-					<Home />
-				</Body>
+				<Body>{toRender}</Body>
+				<Login display={loginVisible} dismiss={() => this.dismissLogin()} />
 			</>
 		);
 	}

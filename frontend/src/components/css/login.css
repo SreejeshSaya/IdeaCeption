@@ -1,57 +1,60 @@
-#loginDiv {
-	display: flex;
-}
-
-#login_details,
-#login_footer {
-	float: left;
-	margin-top: 70px;
-}
-
-#login_details {
-	flex: 2;
-	/* border-right: 2px solid black; */
-}
-
-#login_footer {
-	flex: 1;
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
-}
-
-.email,
-.password {
-	width: 80%;
-	padding: 10px 20px;
-	margin: 5px 0;
-	display: inline-block;
-	border: none;
-	border-bottom: 1px solid black;
-	box-sizing: border-box;
-	transition: border-color 0.3s ease;
-}
-
-.email:focus,
-.password:focus {
-	border-color: #80cbc4;
-}
-
-.login-button-header {
-	display: none;
-}
-
-.btn-block {
-	width: 75%;
-	margin: 1rem auto;
-	background-color: #424242;
-}
-
-.block {
-	flex-basis: 100%;
-	flex-shrink: 0;
+.modal-login {
+	position: absolute;
+	z-index: 15;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+}
+
+.modal-close {
+	color: black;
+	display: none;
+	background: transparent;
+	border: none;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+.login-div,
+.register-div {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 50%;
+	height: 85%;
+	overflow: auto;
+	margin: auto;
+	background: white;
+	transition: transform 0.3s ease-in-out, opacity 0.1s linear;
+}
+
+.login-div {
+	justify-content: center;
+	width: 40%;
+	height: 60%;
+}
+
+label {
+	font-size: 1.1em;
+}
+
+a[role="button"] {
+	cursor: pointer;
+	color: blue;
+}
+
+a[role="button"]:hover {
+	color: darkblue;
 }
 
 .alert-success {
@@ -61,4 +64,15 @@
 .login-error {
 	font-size: 0.8em;
 	margin: 10px;
+}
+
+@media (max-width: 576px) {
+	.login-div,
+	.register-div {
+		width: 100vw;
+		height: 100vh;
+	}
+	.modal-close {
+		display: inline;
+	}
 }
