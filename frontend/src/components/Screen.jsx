@@ -7,6 +7,7 @@ import Login from 'components/Login';
 import LoginButton from 'components/LoginButton';
 import IdeaCard from 'components/IdeaCard';
 import SearchBox from 'components/SearchBox';
+import FundProgress from './FundProgress';
 import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
@@ -169,7 +170,9 @@ class Screen extends Component {
 				{menu}
 				<Body>
 					<Alert messageClass={this.state.alert.messageClass}>{this.state.alert.message}</Alert>
-					{/* <SearchBox /> */}
+					<SearchBox />
+					<br />
+					<FundProgress />
 					{toRender}
 				</Body>
 				<Login

@@ -1,9 +1,9 @@
 const Idea = require('models/Idea');
 
 async function create(req, res) {
-	const { name, abstract, author } = req.body;
+	const { name, body, author } = req.body;
 	try {
-		const newIdea = { name, abstract, author };
+		const newIdea = { name, body, author };
 		await Idea.create(newIdea);
 		res.send({
 			status: 1,
@@ -24,7 +24,7 @@ async function create(req, res) {
 async function view(req, rest) {
 	const { id } = req.body;
 	try {
-		const newIdea = { name, abstract, author };
+		const newIdea = { name, body, author };
 		await Idea.create(newIdea);
 		res.send({
 			status: 1,
@@ -63,7 +63,7 @@ async function fund(req, res) {
 		await Idea.fund(newFund);
 		res.send({
 			status: 1,
-			message: 'Idea created successfully!',
+			message: 'Idea funded successfully!',
 			messageClass: 'success',
 			redirect: '/', // where to?
 		});

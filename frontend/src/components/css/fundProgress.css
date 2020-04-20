@@ -1,0 +1,16 @@
+#goal {
+	width: 50%;
+	height: 25px;
+	background-color: rgb(201, 200, 200);
+	border-radius: 3px;
+}
+
+#progress {
+	width: 50%;
+	height: 100%;
+	text-align: center;
+	background-color: limegreen;
+	border-radius: 3px;
+	white-space: nowrap;
+	transition: all 1s ease;
+}

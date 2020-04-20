@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../pages/common.css';
 
 class Header extends Component {
 	constructor(props) {
@@ -22,15 +23,17 @@ class Header extends Component {
 			<header className={this.getClasses('header')}>
 				{menuToggle}
 				<div className={this.getClasses('corner')}>
-					<img id="Logo" src="assets/icons/android-chrome-192x192.png" alt="IdeaCeption Logo" />
+					<a href="/">
+						<img id="Logo" src="assets/icons/android-chrome-192x192.png" alt="IdeaCeption Logo" />
+					</a>
 				</div>
 
 				<div className={this.getClasses('titleBar')}>
-					<div>
-						{menuToggle2}
-					</div>
-					<div>
+					<div>{menuToggle2}</div>
+					<div id="title">
+						{/* <a href="/"> */}
 						<span className="text-info">Idea</span>Ception
+						{/* </a> */}
 					</div>
 					<div>{rightButtons}</div>
 				</div>

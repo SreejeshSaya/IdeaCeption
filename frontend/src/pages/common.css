@@ -75,7 +75,9 @@ a:hover {
 	color: #343a40;
 }
 
-.menu-toggle, .menu-toggle-nav, .menu-toggle-alt {
+.menu-toggle,
+.menu-toggle-nav,
+.menu-toggle-alt {
 	display: flex;
 	position: relative;
 	flex-direction: column;
@@ -102,7 +104,9 @@ a:hover {
 	left: 15%;
 }
 
-.menu-toggle div, .menu-toggle-nav div, .menu-toggle-alt div {
+.menu-toggle div,
+.menu-toggle-nav div,
+.menu-toggle-alt div {
 	width: 1.3rem;
 	height: 0.25rem;
 	background: white;
@@ -143,4 +147,3 @@ a:hover {
 		display: none;
 	}
 }
-

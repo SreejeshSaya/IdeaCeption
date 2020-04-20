@@ -1,18 +1,21 @@
-/* @import url(https://fonts.googleapis.com/css?family=Open + Sans); */
-
-#search-div {
-	padding: 10px;
-	padding-left: 20%;
+.search {
+	padding-left: 18%;
+	width: 60%;
+	position: relative;
+	display: flex;
 }
 
-#search-box {
-	font-size: medium;
-	width: 50%;
-	border: 3px solid #0c9683;
-	/*border-right: none;*/
+.searchTerm {
+	width: 100%;
+	border: 3px solid #00b4cc;
+	border-right: none;
 	padding: 5px;
-	height: 40px;
-	border-radius: 7px;
+	height: 36px;
+	border-radius: 5px 0 0 5px;
 	outline: none;
 	color: #9dbfaf;
+}
+
+.searchTerm:focus {
+	color: black;
 }

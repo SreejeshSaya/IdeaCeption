@@ -78,6 +78,8 @@ class BaseModel {
 			throw Error(e);
 		}
 	}
+
+	static async delete(obj, fields = null) {}
 }
 
 module.exports = BaseModel;
