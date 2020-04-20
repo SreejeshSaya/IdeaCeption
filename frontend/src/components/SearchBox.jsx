@@ -3,7 +3,11 @@ import './css/searchBox.css';
 
 class SearchBox extends Component {
 	render() {
-		return <input type="text" class="search-box" placeholder="Search" />;
+		return (
+			<div id="search-div">
+				<input type="text" id="search-box" placeholder="Search" />
+			</div>
+		);
 	}
 }
 

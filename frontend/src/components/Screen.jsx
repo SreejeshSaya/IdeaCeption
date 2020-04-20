@@ -130,9 +130,15 @@ class Screen extends Component {
 
 		const menu = (
 			<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()}>
-				<a className="navbar-link" href="/ideas/add">Add</a>
-				<a className="navbar-link" href="/ideas/browse">Browse</a>
-				<a className="navbar-link" href="/ideas/fund">Fund</a>
+				<a className="navbar-link" href="/ideas/add">
+					Add
+				</a>
+				<a className="navbar-link" href="/ideas/browse">
+					Browse
+				</a>
+				<a className="navbar-link" href="/ideas/fund">
+					Fund
+				</a>
 			</Menu>
 		);
 
@@ -163,6 +169,7 @@ class Screen extends Component {
 				{menu}
 				<Body>
 					<Alert messageClass={this.state.alert.messageClass}>{this.state.alert.message}</Alert>
+					{/* <SearchBox /> */}
 					{toRender}
 				</Body>
 				<Login
