@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IdeaCard from 'components/IdeaCard';
+import SearchBox from 'components/SearchBox';
 import 'css/ideaList.css';
 
 class IdeaList extends Component {

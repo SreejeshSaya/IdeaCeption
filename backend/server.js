@@ -6,6 +6,7 @@ const Database = require('./database/database');
 const dbInit = require('./database/dbInitializer');
 const userRouter = require('users/users');
 const validateRouter = require('validators/validate');
+const ideaRouter = require('ideas/ideas');
 
 const PORT = 3000;
 const DB_PATH = './test.db';
@@ -32,6 +33,8 @@ app.use('/api/users', userRouter);
 
 app.use('/api/validate', validateRouter);
 
+app.use('/api/idea', ideaRouter);
+
 app.listen(PORT, () => {
-	console.log('Server is running on port' + PORT);
+	console.log('Server is running on port ' + PORT);
 });

@@ -81,3 +81,5 @@ class BaseModel {
 }
 
 module.exports = BaseModel;
+
+//implement delete module

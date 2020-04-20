@@ -75,16 +75,6 @@ CLOSED: [2020-04-20 Mon 04:50]
 - Note taken on [2020-04-10 Fri 07:11] \\
   Implement pagination for large number of projects (add on, not initially)
 :END:
-*** NEXT Frontend (/projects)
-*** NEXT Backend (/api/projects/all)
-** [X] Funding (Instamojo API)
-CLOSED: [2020-04-20 Mon 04:49]
-:LOGBOOK:
-- State "[X]"        from "DONE"       [2020-04-20 Mon 04:49] \\
-  Not required and prohibited by time
-- Note taken on [2020-04-16 Thu 01:28] \\
-  API implementation not required
-- Punch in [2020-4-15 Wed 13:44]--[2020-4-15 Wed 20:25]
   Created separated css files for most components
   Fixed Login component issue. 
   Implemented idea Create component. (Requires a few more features to be added.)

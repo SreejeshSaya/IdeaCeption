@@ -6,6 +6,7 @@ import Home from 'components/Home';
 import Login from 'components/Login';
 import LoginButton from 'components/LoginButton';
 import IdeaCard from 'components/IdeaCard';
+import SearchBox from 'components/SearchBox';
 import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
