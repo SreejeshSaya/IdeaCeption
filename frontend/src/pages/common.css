@@ -49,6 +49,10 @@ a:hover {
 	align-items: center;
 }
 
+#title {
+	padding-left: 250px;
+}
+
 .nav-menu {
 	position: fixed;
 	display: flex;
@@ -146,4 +150,9 @@ a:hover {
 	.corner-nav {
 		display: none;
 	}
+}
+
+FontAwesomeIcon {
+	justify-content: center;
+	padding: 100px;
 }

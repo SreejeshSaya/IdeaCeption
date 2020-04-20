@@ -1,14 +1,20 @@
 #goal {
-	width: 50%;
-	height: 25px;
+	margin: 0 auto;
+	justify-self: center;
+	align-self: center;
+	width: 90%;
+	height: 30px;
 	background-color: rgb(201, 200, 200);
 	border-radius: 3px;
 }
 
 #progress {
-	width: 50%;
+	padding-left: 10px;
+	padding-right: 10px;
 	height: 100%;
-	text-align: center;
+	/* align-content: right; */
+	text-align: right;
+	font-size: 20px;
 	background-color: limegreen;
 	border-radius: 3px;
 	white-space: nowrap;

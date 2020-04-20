@@ -3,20 +3,15 @@
 	grid-template-columns: 150px auto;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
 	background-color: #eee;
-	padding: 4px;
+	padding: 10px;
 	border-radius: 10px;
 	box-sizing: border-box;
 	margin: 10px;
+	justify-items: center;
 }
 
 .idea-card:hover {
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
-}
-
-.idea-card img {
-	padding: 5px;
-	width: 150px;
-	height: 150px;
 }
 
 .idea-text {

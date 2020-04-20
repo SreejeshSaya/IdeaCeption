@@ -1,0 +1,43 @@
+.idea-header {
+	display: grid;
+	grid-template-columns: 80% 20%;
+}
+
+.idea-title {
+	justify-self: left;
+}
+
+.idea-buttons {
+	justify-self: right;
+	align-self: center;
+	float: right;
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.idea-footer {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.idea-date {
+	justify-self: right;
+	align-self: top;
+}
+
+.idea-author {
+	justify-self: left;
+	align-self: top;
+}
+
+.fund-section {
+	display: grid;
+	grid-template-columns: 90% 10%;
+}
+
+.fund-section Button {
+	height: 32px;
+	width: 50px;
+	justify-self: center;
+	align-self: center;
+}

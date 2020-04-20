@@ -12,17 +12,6 @@ class IdeaCreate extends Component {
 		const alertStyle = {
 			display: 'none',
 		};
-		// const boldStyle = {
-		// 	fontWeight: 'bold',
-		// };
-		// const italicStyle = {
-		// 	fontStyle: 'italic',
-		// };
-		// const underlineStyle = {
-		// 	textDecoration: 'underline',
-		// };
-		// const strikeStyle = { textDecoration: 'strikethrough' };
-		// CKEDITOR.config.height = 400;
 
 		return (
 			<>

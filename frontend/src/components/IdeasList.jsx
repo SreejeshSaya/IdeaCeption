@@ -1,30 +1,35 @@
 import React, { Component } from 'react';
 import IdeaCard from 'components/IdeaCard';
 import SearchBox from 'components/SearchBox';
-import 'css/ideaList.css';
+import './css/ideasList.css';
 
-class IdeaList extends Component {
+class IdeasList extends Component {
 	constructor(props) {
 		super(props);
 	}
 
 	render() {
-		const ideas;
-		const list = ideas.map((idea) =>
-			<>
-			<IdeaCard idea="idea"/>
-			<br/>
-			</>
-		);
+		// const ideas;
+		// const list = ideas.map((idea) =>
+		// 	<>
+		// 	<IdeaCard idea="idea"/>
+		// 	<br/>
+		// 	</>
+		// );
+
 		return (
-			<h2>Idea List</h2>
-			<br/>
-			{list}
+			<>
+				<h1>Idea List</h1>
+				<hr />
+				<br />
+				<SearchBox />
+				<br />
+				<br />
+				<IdeaCard />
+				{/* {list} */}
+			</>
 		);
 	}
 }
 
-export default IdeaList;
-
-//map for now
-//local storage
+export default IdeasList;

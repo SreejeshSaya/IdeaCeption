@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './css/searchBox.css';
-// import '/css/font-awesome.min.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 class SearchBox extends Component {
 	constructor(props) {
@@ -12,7 +12,7 @@ class SearchBox extends Component {
 			<div className="search">
 				<input type="text" className="searchTerm" placeholder="What are you looking for?" />
 				<button type="submit" className="searchButton">
-					<i className="fa fa-search"></i>
+					<FontAwesomeIcon icon="search" />
 				</button>
 			</div>
 		);

@@ -5,9 +5,8 @@ import Body from 'components/Body';
 import Home from 'components/Home';
 import Login from 'components/Login';
 import LoginButton from 'components/LoginButton';
-import IdeaCard from 'components/IdeaCard';
-import SearchBox from 'components/SearchBox';
-import FundProgress from './FundProgress';
+import IdeasList from 'components/IdeasList';
+import IdeaView from 'components/IdeaView';
 import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
@@ -150,8 +149,9 @@ class Screen extends Component {
 		} else if (page === 'add-idea') {
 			toRender = <IdeaCreate />;
 		} else if (page === 'view-idea-list') {
-			toRender = <IdeaCard />;
+			toRender = <IdeasList />;
 		}
+		toRender = <IdeasList />;
 
 		return (
 			<>
@@ -170,9 +170,6 @@ class Screen extends Component {
 				{menu}
 				<Body>
 					<Alert messageClass={this.state.alert.messageClass}>{this.state.alert.message}</Alert>
-					<SearchBox />
-					<br />
-					<FundProgress />
 					{toRender}
 				</Body>
 				<Login

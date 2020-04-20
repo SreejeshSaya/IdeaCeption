@@ -1,0 +1,42 @@
+h1 {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+#quickButtons {
+	display: grid;
+	grid-template-columns: 50% 50%;
+}
+
+.quick-button-large {
+	width: 180px;
+	height: 200px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+	background-color: #eee;
+	padding: 4px;
+	border-radius: 10px;
+	justify-self: center;
+}
+
+.quick-button-large a {
+	width: 100%;
+	height: 100%;
+	display: grid;
+	grid-template-rows: 80% 20%;
+	align-items: center;
+	justify-items: center;
+	color: rgb(80, 80, 80);
+}
+
+.quick-button-large:hover {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+.quick-button-text {
+	text-transform: uppercase;
+	text-align: center;
+	color: black;
+}
