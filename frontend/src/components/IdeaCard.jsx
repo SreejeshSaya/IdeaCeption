@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import './css/ideaCard.css';
 
 function IdeaCard(props) {
-	const { title, abstract } = props;
+	const { key, title, abstract } = props;
 	return (
 		<div className="idea-card">
 			<div className="idea-card-lightbulb">

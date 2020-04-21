@@ -43,7 +43,7 @@ class IdeaCreate extends Component {
 		}
 	}
 
-	add_idea() {}
+	add_idea() {} //Must implement add functionality
 
 	render() {
 		const alertStyle = {

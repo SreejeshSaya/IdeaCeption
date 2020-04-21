@@ -7,7 +7,7 @@ class IdeaView extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			id: '',
+			id: this.props.key,
 			title: '',
 			body: '',
 			author: '',
@@ -23,13 +23,13 @@ class IdeaView extends Component {
 
 	async getInfo(e) {
 		e.preventDefault();
-		const res = await fetch('/api/idea/', {
-			method: 'GET',
+		const res = await fetch('/api/ideas/', {
+			// method: 'GET',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				id: '', //insert id here
+				id: this.props.idea_id, //insert id here
 			}),
 		});
 		if (res.status >= 500) {
@@ -59,7 +59,10 @@ class IdeaView extends Component {
 	}
 
 	async deleteIdea(e) {
-		//
+		e.preventDefault();
+		const res = await fetch('/api/ideas/id', {
+			method: 'DELETE',
+		});
 	}
 
 	async fundIdea(e) {

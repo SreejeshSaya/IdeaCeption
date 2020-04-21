@@ -54,7 +54,6 @@ class IdeasList extends Component {
 				<br />
 				<br />
 				{cardList}
-				{/* {list} */}
 			</>
 		);
 	}
