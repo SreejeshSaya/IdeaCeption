@@ -162,8 +162,9 @@ class Screen extends Component {
 			);
 		} else if (page === 'view-idea-list') {
 			toRender = <IdeasList />
+		} else if (page === 'view-idea') {
+			toRender = <IdeaView />
 		}
-		// toRender = <IdeaView />
 
 		return (
 			<>
