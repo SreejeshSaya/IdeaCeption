@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './css/ideaCreate.css';
-import CKEditorConfig from '../../config/ckEditorConfig';
 import CKEditor from 'ckeditor4-react';
+import CKEditorConfig from '../../config/ckEditorConfig';
 
 class IdeaCreate extends Component {
 	constructor(props) {
@@ -13,8 +13,14 @@ class IdeaCreate extends Component {
 			display: 'none',
 		};
 
+		add_idea() {
+
+		}
+
+		render() {
 		return (
-			<>
+			<form>
+				<div className="display-4">Create Idea</div>
 				<div className="title-input">
 					<input type="text" name="title" className="title" placeholder="Title" required />
 					<p className="alert alert-danger required-message" style={alertStyle}>
@@ -33,12 +39,12 @@ class IdeaCreate extends Component {
 						ADD IDEA
 					</button>
 				</center>
-			</>
+			</form>
 		);
 	}
+
 }
 
 function login_redirect() {}
-function add_idea() {}
 
 export default IdeaCreate;

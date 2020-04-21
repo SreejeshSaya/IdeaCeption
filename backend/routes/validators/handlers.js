@@ -12,4 +12,8 @@ async function emailValidate(req, res, next) {
 	next();
 }
 
-module.exports = { usernameValidate, emailValidate };
+function loginValidate(req, res, next) {
+	res.send(!!req.session.logged_in);
+}
+
+module.exports = { usernameValidate, emailValidate, loginValidate };
