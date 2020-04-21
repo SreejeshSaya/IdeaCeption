@@ -71,6 +71,7 @@ async function view(req, res, next) {
 				title: idea.title,
 				body: idea.body,
 				author: author.username,
+				owner: req.session.user.id === author.id,
 				fund_target: idea.fund_target,
 				fund_amt: funds,
 			},
@@ -128,4 +129,22 @@ async function fund(req, res, next) {
 	}
 }
 
-module.exports = { create, view, fund, viewAll, update };
+async function deleteIdea(req, res, next) {
+	const { id } = req.params;
+	try {
+		await Idea.deleteObj(id);
+		res.send({
+			status: 1,
+			message: 'Idea deleted successfully',
+			messageClass: 'success',
+		});
+	} catch (e) {
+		res.send({
+			status: 0,
+			message: e.message,
+			messageClass: 'danger',
+		});
+	}
+}
+
+module.exports = { create, view, fund, viewAll, update, deleteIdea };

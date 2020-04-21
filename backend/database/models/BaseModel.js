@@ -41,6 +41,7 @@ class BaseModel {
 	}
 
 	static async loadOne(id) {
+		if (!await this.existingObj({ id })) throw new Error('Object with this id does not exist');
 		const obj = await this.loadByFields({ id }, { unique: true });
 		return obj;
 	}
@@ -137,7 +138,7 @@ class BaseModel {
 		}
 	}
 
-	static async delete(id) {
+	static async deleteObj(id) {
 		const sql = `DELETE FROM ${this.tableName()} WHERE id = ${id};`;
 		console.log(sql);
 
