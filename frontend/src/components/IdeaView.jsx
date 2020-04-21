@@ -6,63 +6,144 @@ import './css/ideaView.css';
 class IdeaView extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			id: '',
+			title: '',
+			body: '',
+			author: '',
+			owner: '',
+			target: '',
+			amount: '',
+		};
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.getInfo(e);
+	}
 
-	async getInfo(e) {}
-
-	async fundIdea() {
+	async getInfo(e) {
 		e.preventDefault();
-		const { action } = e.target;
-		const res = await fetch(actio, {
-			method: 'PUT',
+		const res = await fetch('/api/idea/', {
+			method: 'GET',
 			headers: {
-				// what header?
+				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				//insert fund details here
+				id: '', //insert id here
 			}),
 		});
+		if (res.status >= 500) {
+			setAlert({
+				// element: 'login',
+				message: 'Idea is not present',
+				messageClass: 'danger',
+			});
+			return;
+		} else {
+			this.setState({
+				id: res.id,
+				title: res.title,
+				body: res.body,
+				author: res.author,
+				owner: res.owner,
+				target: res.fund_target,
+				amount: res.fund_amt,
+			});
+		}
+	}
+
+	//handle 404 not found
+
+	async editIdea(e) {
+		//
+	}
+
+	async deleteIdea(e) {
+		//
+	}
+
+	async fundIdea(e) {
+		e.preventDefault();
+		const { action } = e.target;
+		const res = await fetch(action, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				amount: e.target.fund_amount.value,
+			}),
+		});
+
+		if (res.status >= 500) {
+			setAlert({
+				element: 'login',
+				message: 'There was an error an server. Please try after some time',
+				messageClass: 'danger',
+			});
+			return;
+		}
+
+		const json = await res.json();
+		if (json.status === 1) {
+			setAlert({
+				message: json.message,
+				messageClass: json.messageClass,
+			});
+		} else {
+			setAlert({
+				message: 'Error',
+				messageClass: 'danger',
+			});
+		}
 	}
 
 	render() {
-		const owner = true;
+		const { id, title, body, author, target, amount } = this.state;
 
-		if (isLoggedIn) {
-			const fundButton = (
-				<Button icon="rupee-sign" size="lg" className="quick-button-small fund-button" />
-			);
-		} else {
-			const fundButton = (
-				<Button
-					icon="rupee-sign"
-					size="lg"
-					className="quick-button-small fund-button"
-					disabled="true"
-				/>
-			);
-		}
+		// if (this.state.loggedIn) {
+		// 	const fundButton = (
+		// 		<Button icon="rupee-sign" size="lg" className="quick-button-small fund-button" />
+		// 	);
+		// } else {
+		// 	const fundButton = (
+		// 		<Button
+		// 			icon="rupee-sign"
+		// 			size="lg"
+		// 			className="quick-button-small fund-button"
+		// 			disabled="true"
+		// 		/>
+		// 	);
+		// }
 
 		return (
 			<>
 				<div className="idea-header">
-					<h1 className="idea-title">Idea Title</h1>
+					<h1 className="idea-title">{title}</h1>
 					{owner == true && (
 						<div className="idea-buttons">
-							<Button icon="edit" size="lg" className="quick-button-small" />
-							<Button icon="trash-alt" size="lg" className="quick-button-small" />
+							<Button
+								icon="edit"
+								size="lg"
+								className="quick-button-small"
+								onClick={this.editIdea(event)}
+							/>
+							<Button
+								icon="trash-alt"
+								size="lg"
+								className="quick-button-small"
+								onClick={this.deleteIdea(event)}
+							/>
 						</div>
 					)}
 				</div>
 				<hr />
 				<div className="idea-footer">
-					<small className="idea-author">By: Author</small>
-					<small className="idea-date">Date</small>
+					<small className="idea-author">By: {author}</small>
 				</div>
 				<br />
 				<div className="fund-section">
-					<FundBar />
+					<FundBar goal={target} amount={amount} />
 					<form
 						action="/api/idea/id/fund"
 						method="put"
@@ -71,8 +152,8 @@ class IdeaView extends Component {
 						id="fund-input"
 					>
 						<div>
-							<span>Fund</span>
-							<input type="number" id="fund-amount" min="10" />
+							<span>Fund </span>
+							<input type="number" id="fund-amount" name="fund_amount" min="10" />
 						</div>
 						<Button
 							type="submit"
@@ -85,7 +166,7 @@ class IdeaView extends Component {
 				<br />
 				<hr />
 				<br />
-				<p>Body here</p>
+				<p>{body}</p>
 			</>
 		);
 	}

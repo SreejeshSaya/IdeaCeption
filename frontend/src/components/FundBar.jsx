@@ -8,13 +8,13 @@ class FundBar extends Component {
 
 	render() {
 		// const prog = "width:" + this.props.
-		const { progress } = this.props;
+		const { amount } = this.props;
 		const { goal } = this.props;
 
 		return (
 			<div id="goal">
-				<div id="progress" style={{ width: `${(progress / goal) * 100}%` }}>
-					${progress} / ${goal}
+				<div id="progress" style={{ width: `${(amount / goal) * 100}%` }}>
+					${amount} / ${goal}
 				</div>
 			</div>
 		);
