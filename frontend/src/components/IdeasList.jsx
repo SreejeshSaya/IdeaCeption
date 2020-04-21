@@ -38,7 +38,7 @@ class IdeasList extends Component {
 		const cardList = (
 			<>
 				{ideas.map((i) => {
-					return <IdeaCard key={i.id} title={i.title} abstract={i.body} />;
+					return <IdeaCard key={i.id} id={i.id} title={i.title} abstract={i.body} />;
 				})}
 			</>
 		);

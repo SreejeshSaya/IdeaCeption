@@ -13,8 +13,8 @@ async function create(req, res, next) {
 		res.send({
 			status: 1,
 			message: 'Idea created successfully!',
-			MessageClass: 'success',
-			redirect: '/ideas/browse',
+			messageClass: 'success',
+			redirect: '/',
 		});
 		next();
 	} catch (e) {
@@ -60,10 +60,13 @@ async function update(req, res, next) {
 
 async function view(req, res, next) {
 	const { id } = req.params;
+	console.log(id);
 	try {
 		const idea = await Idea.loadOne(id);
 		const author = await User.loadOne(idea.author_id);
+		console.log(author);
 		const funds = await Fund.getProjectFunds(idea.id);
+		console.log(funds);
 		res.send({
 			status: 1,
 			message: {
@@ -71,7 +74,7 @@ async function view(req, res, next) {
 				title: idea.title,
 				body: idea.body,
 				author: author.username,
-				owner: req.session.user.id === author.id,
+				owner: req.session.user && req.session.user.id === author.id,
 				fund_target: idea.fund_target,
 				fund_amt: funds,
 			},

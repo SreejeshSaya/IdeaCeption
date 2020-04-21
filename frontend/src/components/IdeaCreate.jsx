@@ -9,6 +9,7 @@ class IdeaCreate extends Component {
 		this.state = {
 			alertSet: false,
 			loginPopup: false,
+			body: ''
 		};
 	}
 
@@ -43,7 +44,32 @@ class IdeaCreate extends Component {
 		}
 	}
 
-	add_idea() {} //Must implement add functionality
+	async add_idea(e) {
+		e.preventDefault();
+		const res = await fetch('/api/ideas/create', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				title: e.target.title.value,
+				body: this.state.body,
+				fund_target: e.target.fund.value
+			}),
+		});
+
+		const json = await res.json();
+
+		localStorage.setItem('message', json.message);
+		localStorage.setItem('messageClass', json.messageClass);
+		location.href = '/';
+	}
+
+	logbody(e) {
+		this.setState({
+			body: e.editor.getData()
+		})
+	}
 
 	render() {
 		const alertStyle = {
@@ -55,7 +81,7 @@ class IdeaCreate extends Component {
 		}
 
 		return (
-			<form>
+			<form onSubmit={(e) => this.add_idea(e)}>
 				<div className="display-4">Create Idea</div>
 				<div className="title-input">
 					<input type="text" name="title" className="title" placeholder="Title" required />
@@ -63,15 +89,21 @@ class IdeaCreate extends Component {
 						Please enter a title
 					</p>
 				</div>
-				<CKEditor config={CKEditorConfig} type="classic" data="<p>Hello</p>" />
+				<CKEditor
+					config={CKEditorConfig}
+					type="classic"
+					name="body"
+					// data={'<p>Hello</p>'}
+					onChange={(e) => this.logbody(e)}
+				/>
+				<div className="fund-input">
+					{' '}
+					<label>Funding Goal</label> <input type="number" name="fund" min="10" placeholder="100" />{' '}
+				</div>{' '}
+				<br />
 				<center>
-					<button
-						type="submit"
-						className="btn btn-secondary btn-block"
-						onClick={() => this.add_idea()}
-						id="add_idea_btn"
-					>
-						ADD IDEA
+					<button type="submit" className="btn btn-secondary btn-block" id="add_idea_btn">
+						Create Idea
 					</button>
 				</center>
 			</form>

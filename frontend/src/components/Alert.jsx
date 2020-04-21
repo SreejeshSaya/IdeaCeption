@@ -7,6 +7,7 @@ function Alert(props) {
 	return (
 		<div className={`alert alert-${props.messageClass} alert-dismissible fade show`}>
 			{props.children}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close"></button>
 		</div>
 	);
 }
