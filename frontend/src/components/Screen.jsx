@@ -26,12 +26,17 @@ class Screen extends Component {
 		};
 	}
 
-	componentWillMount() {
-		if (localStorage.getItem('loggedIn')) {
-			this.setState({
-				loggedIn: true,
+	componentDidMount() {
+		fetch('/api/validate/logged_in')
+			.then((res) => res.json())
+			.then((res) => {
+				if (res) {
+					this.setState({
+						loggedIn: true,
+					});
+				}
 			});
-		}
+
 		if (localStorage.getItem('message')) {
 			this.setState(
 				{
@@ -48,26 +53,27 @@ class Screen extends Component {
 		}
 	}
 
-	logIn(res) {
-		this.setState(
-			{
-				loggedIn: true,
-				loginVisible: false,
+	setAlert(newAlert) {
+		this.setState({
+			alert: {
+				message: newAlert.message,
+				messageClass: newAlert.messageClass,
 			},
-			() => {
-				localStorage.setItem('loggedIn', true);
-				this.setState({
-					alert: {
-						message: res.message,
-						messageClass: res.messageClass,
-					},
-				});
-			}
-		);
+		});
+	}
+
+	logIn(res) {
+		this.setState({
+			loggedIn: true,
+			loginVisible: false,
+			alert: {
+				message: res.message,
+				messageClass: res.messageClass,
+			},
+		});
 	}
 
 	async logOut() {
-		localStorage.removeItem('loggedIn');
 		this.setState(
 			{
 				loggedIn: false,
@@ -147,7 +153,13 @@ class Screen extends Component {
 		if (page === 'home') {
 			toRender = <Home />;
 		} else if (page === 'add-idea') {
-			toRender = <IdeaCreate />;
+			toRender = (
+				<IdeaCreate
+					loggedIn={this.state.loggedIn}
+					setAlert={(newAlert) => this.setAlert(newAlert)}
+					toggleLogin={() => this.toggleLogin()}
+				/>
+			);
 		} else if (page === 'view-idea-list') {
 			toRender = <IdeasList />;
 		}

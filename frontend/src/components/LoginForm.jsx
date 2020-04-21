@@ -106,7 +106,6 @@ class LoginForm extends Component {
 		}
 
 		const json = await res.json();
-		console.log(json);
 		if (json.status === 1) {
 			logIn(json);
 		} else {

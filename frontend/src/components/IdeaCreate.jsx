@@ -6,11 +6,54 @@ import CKEditorConfig from '../../config/ckEditorConfig';
 class IdeaCreate extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			alertSet: false,
+			loginPopup: false,
+		};
 	}
 
-	async addIdea() {}
+	componentDidMount() {
+		const { loggedIn, setAlert } = this.props;
+		if (!loggedIn) {
+			setAlert({
+				message: 'You need to log in to create an idea',
+				messageClass: 'info',
+			});
+			this.setState({
+				alertSet: true,
+			});
+		}
+	}
+
+	componentDidUpdate() {
+		const { loggedIn, setAlert, toggleLogin } = this.props;
+		if (loggedIn && this.state.alertSet) {
+			setAlert({
+				message: '',
+				messageClass: '',
+			});
+			this.setState({
+				alertSet: false,
+			});
+		} else if (!this.state.loginPopup) {
+			toggleLogin();
+			this.setState({
+				loginPopup: true,
+			});
+		}
+	}
+
+	add_idea() {}
 
 	render() {
+		const alertStyle = {
+			display: 'none',
+		};
+		const { loggedIn } = this.props;
+		if (!loggedIn) {
+			return null;
+		}
+
 		return (
 			<form>
 				<div className="display-4">Create Idea</div>
@@ -20,15 +63,14 @@ class IdeaCreate extends Component {
 						Please enter a title
 					</p>
 				</div>
-				<div className="alert alert-custom" style={alertStyle}>
-					<p>Please login to add idea!</p>
-					<button className="btn btn-login" onClick={login_redirect}>
-						LOGIN NOW
-					</button>
-				</div>
 				<CKEditor config={CKEditorConfig} type="classic" data="<p>Hello</p>" />
 				<center>
-					<button className="btn btn-secondary btn-block" onClick={add_idea} id="add_idea_btn">
+					<button
+						type="submit"
+						className="btn btn-secondary btn-block"
+						onClick={() => this.add_idea()}
+						id="add_idea_btn"
+					>
 						ADD IDEA
 					</button>
 				</center>
@@ -36,7 +78,5 @@ class IdeaCreate extends Component {
 		);
 	}
 }
-
-function login_redirect() {}
 
 export default IdeaCreate;
