@@ -130,14 +130,14 @@ class Screen extends Component {
 
 		const menu = (
 			<Menu menuVisible={menuVisible} toggleFunc={() => this.toggleMenu()}>
-				<a className="navbar-link" href="/ideas/add">
+				<a className="navbar-link" href="/ideas/create">
 					Add
 				</a>
 				<a className="navbar-link" href="/ideas/browse">
 					Browse
 				</a>
-				<a className="navbar-link" href="/ideas/fund">
-					Fund
+				<a className="navbar-link" href="/about">
+					About
 				</a>
 			</Menu>
 		);
@@ -151,7 +151,7 @@ class Screen extends Component {
 		} else if (page === 'view-idea-list') {
 			toRender = <IdeasList />;
 		}
-		toRender = <IdeasList />;
+		// toRender = <IdeasList />;
 
 		return (
 			<>

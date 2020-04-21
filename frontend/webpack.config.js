@@ -12,6 +12,7 @@ const htmlPlugins = getFilesFromDir(PAGE_DIR, ['.html']).map((filePath) => {
 		chunks: [fileName.replace(path.extname(fileName), ''), 'vendor'],
 		template: filePath,
 		filename: fileName,
+		base: '/',
 	});
 });
 
@@ -60,7 +61,7 @@ module.exports = {
 				},
 			},
 			{
-				test: /\.css$/i,
+				test: /\.css$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader'],
 			},
 			{
