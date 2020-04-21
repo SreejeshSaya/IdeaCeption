@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import './css/searchBox.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-class SearchBox extends Component {
-	constructor(props) {
-		super(props);
-	}
-
-	render() {
-		return (
-			<div className="search">
-				<input type="text" className="searchTerm" placeholder="What are you looking for?" />
-				<button type="submit" className="searchButton">
-					<FontAwesomeIcon icon="search" />
-				</button>
-			</div>
-		);
-	}
+function SearchBox(props) {
+	const { filter } = props;
+	return (
+		<form className="search" onSubmit={filter}>
+			<input
+				type="text"
+				className="searchTerm"
+				name="query"
+				placeholder="What are you looking for?"
+			/>
+			<button type="submit" className="searchButton">
+				<FontAwesomeIcon icon="search" />
+			</button>
+		</form>
+	);
 }
 
 export default SearchBox;

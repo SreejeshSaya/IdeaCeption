@@ -7,7 +7,7 @@ import Login from 'components/Login';
 import LoginButton from 'components/LoginButton';
 import IdeasList from 'components/IdeasList';
 import IdeaView from 'components/IdeaView';
-// import IdeaCreate from 'components/IdeaCreate';
+import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
 
@@ -102,8 +102,8 @@ class Screen extends Component {
 		});
 	}
 
-	dismissLogin() {
-		if (event.target.getAttribute('role') === 'modal-dismiss') {
+	dismissLogin(e) {
+		if (e.target.getAttribute('role') === 'modal-dismiss') {
 			this.setState({
 				loginVisible: false,
 			});
@@ -111,7 +111,7 @@ class Screen extends Component {
 	}
 
 	render() {
-		const { menuVisible, loginVisible, loggedIn } = this.state;
+		const { menuVisible, loginVisible, loggedIn, alert } = this.state;
 		const menuToggle = (
 			<MenuToggle
 				className="menu-toggle"
@@ -139,7 +139,7 @@ class Screen extends Component {
 				<a className="navbar-link" href="/ideas/create">
 					Add
 				</a>
-				<a className="navbar-link" href="/ideas/browse">
+				<a className="navbar-link" href="/ideas">
 					Browse
 				</a>
 				<a className="navbar-link" href="/about">
@@ -155,15 +155,15 @@ class Screen extends Component {
 		} else if (page === 'add-idea') {
 			toRender = (
 				<IdeaCreate
-					loggedIn={this.state.loggedIn}
+					loggedIn={loggedIn}
 					setAlert={(newAlert) => this.setAlert(newAlert)}
 					toggleLogin={() => this.toggleLogin()}
 				/>
 			);
 		} else if (page === 'view-idea-list') {
-			toRender = <IdeasList />;
+			toRender = <IdeasList />
 		}
-		toRender = <IdeaView />;
+		// toRender = <IdeaView />
 
 		return (
 			<>
@@ -181,13 +181,13 @@ class Screen extends Component {
 				/>
 				{menu}
 				<Body>
-					<Alert messageClass={this.state.alert.messageClass}>{this.state.alert.message}</Alert>
+					<Alert messageClass={alert.messageClass}>{alert.message}</Alert>
 					{toRender}
 				</Body>
 				<Login
 					display={loginVisible}
 					logIn={(res) => this.logIn(res)}
-					dismiss={() => this.dismissLogin()}
+					dismiss={(e) => this.dismissLogin(e)}
 				/>
 			</>
 		);
