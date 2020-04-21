@@ -8,16 +8,9 @@ class IdeaCreate extends Component {
 		super(props);
 	}
 
+	async addIdea() {}
+
 	render() {
-		const alertStyle = {
-			display: 'none',
-		};
-
-		add_idea() {
-
-		}
-
-		render() {
 		return (
 			<form>
 				<div className="display-4">Create Idea</div>
@@ -42,7 +35,6 @@ class IdeaCreate extends Component {
 			</form>
 		);
 	}
-
 }
 
 function login_redirect() {}

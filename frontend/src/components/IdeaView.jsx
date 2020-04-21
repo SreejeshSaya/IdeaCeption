@@ -8,15 +8,41 @@ class IdeaView extends Component {
 		super(props);
 	}
 
+	componentDidMount() {}
+
+	async getInfo(e) {}
+
+	async fundIdea() {
+		e.preventDefault();
+		const { action } = e.target;
+		const res = await fetch(actio, {
+			method: 'PUT',
+			headers: {
+				// what header?
+			},
+			body: JSON.stringify({
+				//insert fund details here
+			}),
+		});
+	}
+
 	render() {
 		const owner = true;
-		let isLoggedIn;
-		let buttonStatus;
-		// if (isLoggedIn) {
-		// 	buttonStatus = enabled;
-		// } else {
-		// 	buttonStatus = disabled;
-		// }
+
+		if (isLoggedIn) {
+			const fundButton = (
+				<Button icon="rupee-sign" size="lg" className="quick-button-small fund-button" />
+			);
+		} else {
+			const fundButton = (
+				<Button
+					icon="rupee-sign"
+					size="lg"
+					className="quick-button-small fund-button"
+					disabled="true"
+				/>
+			);
+		}
 
 		return (
 			<>
@@ -24,8 +50,8 @@ class IdeaView extends Component {
 					<h1 className="idea-title">Idea Title</h1>
 					{owner == true && (
 						<div className="idea-buttons">
-							<Button type="edit" size="lg" className="quick-button-small" />
-							<Button type="trash-alt" size="lg" className="quick-button-small" />
+							<Button icon="edit" size="lg" className="quick-button-small" />
+							<Button icon="trash-alt" size="lg" className="quick-button-small" />
 						</div>
 					)}
 				</div>
@@ -37,16 +63,28 @@ class IdeaView extends Component {
 				<br />
 				<div className="fund-section">
 					<FundBar />
-					<form id="fund-input">
+					<form
+						action="/api/idea/id/fund"
+						method="put"
+						name="fund"
+						onSubmit={(event) => this.fundIdea(event)}
+						id="fund-input"
+					>
 						<div>
 							<span>Fund</span>
 							<input type="number" id="fund-amount" min="10" />
 						</div>
-						<Button type="rupee-sign" size="lg" className="quick-button-small fund-button" />
+						<Button
+							type="submit"
+							icon="rupee-sign"
+							size="lg"
+							className="quick-button-small fund-button"
+						/>
 					</form>
 				</div>
 				<br />
 				<hr />
+				<br />
 				<p>Body here</p>
 			</>
 		);

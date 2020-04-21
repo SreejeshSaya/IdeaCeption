@@ -11,8 +11,8 @@ class Button extends Component {
 	render() {
 		return (
 			<>
-				<button className={this.props.className} disabled={this.props.clickStatus}>
-					<FontAwesomeIcon icon={this.props.type} size={this.props.size} />
+				<button className={this.props.className} disabled={this.props.clickStatus} {...this.props}>
+					<FontAwesomeIcon icon={this.props.icon} size={this.props.size} />
 				</button>
 			</>
 		);

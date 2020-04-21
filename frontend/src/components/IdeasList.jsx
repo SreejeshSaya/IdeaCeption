@@ -8,6 +8,14 @@ class IdeasList extends Component {
 		super(props);
 	}
 
+	componentDidMount() {
+		// insert getList here
+	}
+
+	async getList() {}
+
+	async filterSearch() {}
+
 	render() {
 		// const ideas;
 		// const list = ideas.map((idea) =>
