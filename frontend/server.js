@@ -27,6 +27,10 @@ app.get('/ideas', function (req, res) {
 	res.sendFile('ideaList.html', { root: DIST });
 });
 
+app.get('/ideas/:id(\\d+)', function (req, res) {
+	res.sendFile('ideaView.html', { root: DIST });
+});
+
 app.get('/ideas/create', function (req, res) {
 	res.sendFile('ideaCreate.html', { root: DIST });
 });
