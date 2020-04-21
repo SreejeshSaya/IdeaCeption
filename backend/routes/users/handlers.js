@@ -25,7 +25,7 @@ async function login(req, res, next) {
 	try {
 		if (await User.verify(email, password)) {
 			req.session.logged_in = true;
-			req.session.user = await User.loadByFields({ email });
+			req.session.user = await User.loadByFields({ email }, { unique: true });
 			res.send({
 				status: 1,
 				message: 'You have logged in successfully!',

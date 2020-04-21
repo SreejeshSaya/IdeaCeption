@@ -35,7 +35,7 @@
 		"root": ".",
 		"models": "./database/models",
 		"users": "./routes/users",
-		"posts": "./routes/posts",
+		"ideas": "./routes/ideas",
 		"validators": "./routes/validators"
 	}
 }

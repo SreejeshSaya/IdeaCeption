@@ -33,7 +33,7 @@ app.use('/api/users', userRouter);
 
 app.use('/api/validate', validateRouter);
 
-app.use('/api/idea', ideaRouter);
+app.use('/api/ideas', ideaRouter);
 
 app.listen(PORT, () => {
 	console.log('Server is running on port ' + PORT);

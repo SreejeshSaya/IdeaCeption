@@ -119,7 +119,7 @@ class RegisterForm extends Component {
 	}
 
 	async handleSubmit(e) {
-		const { toggle } = this.props;
+		const { toggle, setAlert } = this.props;
 		e.preventDefault();
 		const { action } = e.target;
 		const res = await fetch(action, {
@@ -135,20 +135,25 @@ class RegisterForm extends Component {
 			}),
 		});
 		const json = await res.json();
-		console.log(json);
-		if (json.status === 1) {
-			this.props.setAlert({
-				element: 'login',
-				message: json.message,
-				messageClass: json.messageClass,
-			});
-			toggle();
-		} else {
-			this.props.setAlert({
+
+		if (res.status >= 500) {
+			setAlert({
 				element: 'register',
 				message: 'There was an error on server. Please try again after some time',
 				messageClass: 'danger',
 			});
+			return;
+		}
+
+		console.log(json);
+
+		setAlert({
+			element: 'login',
+			message: json.message,
+			messageClass: json.messageClass,
+		});
+		if (json.status === 1) {
+			toggle();
 		}
 	}
 

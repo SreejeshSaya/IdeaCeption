@@ -84,6 +84,7 @@ class LoginForm extends Component {
 	async handleSubmit(e) {
 		e.preventDefault();
 		const { action } = e.target;
+		const { logIn, setAlert } = this.props;
 		const res = await fetch(action, {
 			method: 'POST',
 			headers: {
@@ -94,12 +95,22 @@ class LoginForm extends Component {
 				password: e.target.password.value,
 			}),
 		});
+
+		if (res.status >= 500) {
+			setAlert({
+				element: 'login',
+				message: 'There was an error an server. Please try after some time',
+				messageClass: 'danger',
+			});
+			return;
+		}
+
 		const json = await res.json();
 		console.log(json);
 		if (json.status === 1) {
-			this.props.logIn(json);
+			logIn(json);
 		} else {
-			this.props.setAlert({
+			setAlert({
 				element: 'login',
 				message: json.message,
 				messageClass: json.messageClass,

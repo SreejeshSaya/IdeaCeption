@@ -1,21 +1,14 @@
 const BaseModel = require('./BaseModel');
-const User = require('./User');
+const Fund = require('models/Fund');
 
 const structureSql_ = `
 		CREATE TABLE IF NOT EXISTS ideas (
-		  id INTEGER PRIMARY KEY AUTOINCREMENT,
-			name VARCHAR(255) NOT NULL,
+			id INTEGER PRIMARY KEY AUTOINCREMENT,
+			title VARCHAR(255) NOT NULL,
 			body VARCHAR(100) NOT NULL,
-			author VARCHAR(255) NOT NULL,
-			FOREIGN KEY (author) REFERENCES Users(username) // Is this how you add it?
-			);
-
-			CREATE TABLE IF NOT EXISTS fund (
-				id INTEGER PRIMARY KEY AUTOINCREMENT,
-				idea_id INTEGER NOT NULL,
-				patron VARCHAR(255) NOT NULL,
-				amount INTEGER NOT NULL
-				FOREIGN KEY (patron) REFERENCES User(username)
+			author_id INTEGER NOT NULL,
+			fund_target INTEGER NOT NULL DEFAULT 0,
+			FOREIGN KEY (author_id) REFERENCES users(id)
 			);
 `;
 
@@ -28,19 +21,30 @@ class Idea extends BaseModel {
 		return structureSql_;
 	}
 
-	static async create(obj, fields = null) {
-		//
+	static modelKeys(type) {
+		switch (type) {
+			case 'create':
+				return ['title', 'body', 'author_id', 'fund_target'];
+			case 'notnull':
+				return ['title', 'body', 'author_id', 'fund_target'];
+			default:
+				return ['id', 'title', 'body', 'author_id', 'fund_target'];
+		}
 	}
 
-	static async fund(obj, fields = null) {
-		if (!obj.idea_id) throw new Error('Invalid Idea ID!');
+	static async filter(query) {
+		const filteredQuery = query ? query.replace(/\\/g, '').replace(/%/g, '\\%') : '';
+		const queryString = `%${filteredQuery}%`;
+		const sql = "SELECT * FROM ideas WHERE title LIKE ? ESCAPE '\\'";
+		console.log(sql);
 
 		try {
-			const newFund = Object.assign(obj);
-			// insert  code for adding to database
+			const obj = await this.db_.selectAll(sql, queryString);
+			return obj;
 		} catch (e) {
 			throw Error(e);
 		}
+	}
 }
 
 module.exports = Idea;

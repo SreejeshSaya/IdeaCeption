@@ -29,7 +29,6 @@ class BaseModel {
 		}
 		const sql = `SELECT ${options.fields} FROM ${this.tableName()} ${whereClause}`;
 		console.log(sql);
-		console.log(params);
 
 		try {
 			const obj = options.unique
@@ -51,6 +50,17 @@ class BaseModel {
 		if (!fields) {
 			fields = [];
 			useObjFields = true;
+		}
+
+		if (useObjFields && !this.validObject(obj, true)) {
+			throw new Error(`Object is not a valid initial instance of ${this.tableName()}`);
+		} else {
+			const keys = this.modelKeys();
+			fields.forEach((field) => {
+				if (!keys.includes(field)) {
+					throw new Error(`Object is not a valid initial instance of ${this.tableName()}`);
+				}
+			});
 		}
 
 		const params = [];
@@ -79,9 +89,109 @@ class BaseModel {
 		}
 	}
 
-	static async delete(obj, fields = null) {}
+	static async update(id, obj, fields = null) {
+		let useObjFields = false;
+		if (!fields) {
+			fields = [];
+			useObjFields = true;
+		}
+
+		if (useObjFields && !this.validObject(obj)) {
+			throw new Error(`Object is not a valid instance of ${this.tableName()}`);
+		} else {
+			const keys = this.modelKeys();
+			fields.forEach((field) => {
+				if (!keys.includes(field)) {
+					throw new Error(`Object is not a valid instance of ${this.tableName()}`);
+				} else if (key === 'id') {
+					throw new Error('Cannot update primary key');
+				}
+			});
+		}
+
+		const params = [];
+		for (var field in obj) {
+			params.push(obj[field]);
+			if (useObjFields) {
+				fields.push(field);
+			}
+		}
+
+		let updatePlaceholder = '';
+		fields.forEach((field) => {
+			if (updatePlaceholder === '') {
+				updatePlaceholder += `${field} = ?`
+			} else {
+				updatePlaceholder += `, ${field} = ?`
+			}
+		})
+
+		const sql = `UPDATE ${this.tableName()} SET ${updatePlaceholder} WHERE id = ?;`;
+		console.log(sql);
+		params.push(id);
+
+		try {
+			await this.db_.exec(sql, params);
+		} catch (e) {
+			throw Error(e);
+		}
+	}
+
+	static async delete(id) {
+		const sql = `DELETE FROM ${this.tableName()} WHERE id = ${id};`;
+		console.log(sql);
+
+		try {
+			await this.db_.exec(sql);
+		} catch (e) {
+			throw Error(e);
+		}
+	}
+
+	static validObject(obj, create = false) {
+		if (create) {
+			const keys = this.modelKeys('create');
+			for (const key of Object.keys(obj)) {
+				if (!keys.includes(key) || !obj[key]) {
+					return false;
+				}
+			}
+		} else {
+			const keys = this.modelKeys();
+			const notNullKeys = this.modelKeys('notnull');
+			for (const key of Object.keys(obj)) {
+				if (!keys.includes(key) || (notNullKeys.includes(key) && !obj[key])) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
+	static async existingObj(obj) {
+		if (!this.validObject(obj))
+			throw new Error(`Object is not a valid instance of ${this.tableName()}`);
+
+		let whereClause = '';
+		const params = [];
+		Object.keys(obj).forEach((key) => {
+			params.push(obj[key]);
+			if (whereClause === '') {
+				whereClause += `WHERE ${key} = ?`;
+			} else {
+				whereClause += ` AND ${key} = ?`;
+			}
+		});
+
+		const sql = `SELECT * FROM ${this.tableName()} ${whereClause};`;
+		console.log(sql);
+		try {
+			const selectedObj = await this.db_.selectOne(sql, params);
+			return !!selectedObj;
+		} catch (e) {
+			throw Error(e);
+		}
+	}
 }
 
 module.exports = BaseModel;
-
-//implement delete module
