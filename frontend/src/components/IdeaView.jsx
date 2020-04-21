@@ -9,14 +9,25 @@ class IdeaView extends Component {
 	}
 
 	render() {
+		const owner = true;
+		let isLoggedIn;
+		let buttonStatus;
+		// if (isLoggedIn) {
+		// 	buttonStatus = enabled;
+		// } else {
+		// 	buttonStatus = disabled;
+		// }
+
 		return (
 			<>
 				<div className="idea-header">
 					<h1 className="idea-title">Idea Title</h1>
-					<div className="idea-buttons">
-						<Button type="edit" size="lg" />
-						<Button type="trash-alt" size="lg" />
-					</div>
+					{owner == true && (
+						<div className="idea-buttons">
+							<Button type="edit" size="lg" className="quick-button-small" />
+							<Button type="trash-alt" size="lg" className="quick-button-small" />
+						</div>
+					)}
 				</div>
 				<hr />
 				<div className="idea-footer">
@@ -26,9 +37,16 @@ class IdeaView extends Component {
 				<br />
 				<div className="fund-section">
 					<FundBar />
-					<Button type="rupee-sign" size="lg" className="fund-button" />
+					<form id="fund-input">
+						<div>
+							<span>Fund</span>
+							<input type="number" id="fund-amount" min="10" />
+						</div>
+						<Button type="rupee-sign" size="lg" className="quick-button-small fund-button" />
+					</form>
 				</div>
 				<br />
+				<hr />
 				<p>Body here</p>
 			</>
 		);

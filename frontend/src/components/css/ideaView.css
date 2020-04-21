@@ -32,12 +32,29 @@
 
 .fund-section {
 	display: grid;
-	grid-template-columns: 90% 10%;
+	grid-template-columns: 70% 30%;
 }
 
-.fund-section Button {
-	height: 32px;
-	width: 50px;
+#fund-input {
+	display: grid;
+	grid-template-columns: 90% 10%;
+	align-items: center;
+	justify-items: center;
+}
+
+#fund-input div {
+	justify-self: center;
+	padding: 10px;
+}
+
+.fund-button {
 	justify-self: center;
 	align-self: center;
+	width: 50px;
+}
+
+.fund-amount {
+	height: 32px;
+	width: 100%;
+	border-radius: 6px;
 }
