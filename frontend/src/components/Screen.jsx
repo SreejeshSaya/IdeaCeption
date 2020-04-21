@@ -7,7 +7,7 @@ import Login from 'components/Login';
 import LoginButton from 'components/LoginButton';
 import IdeasList from 'components/IdeasList';
 import IdeaView from 'components/IdeaView';
-import IdeaCreate from 'components/IdeaCreate';
+// import IdeaCreate from 'components/IdeaCreate';
 import { Menu, MenuToggle } from 'components/Menu';
 import '../pages/common.css';
 
@@ -151,7 +151,7 @@ class Screen extends Component {
 		} else if (page === 'view-idea-list') {
 			toRender = <IdeasList />;
 		}
-		// toRender = <IdeasList />;
+		toRender = <IdeaView />;
 
 		return (
 			<>
